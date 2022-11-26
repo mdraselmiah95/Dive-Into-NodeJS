@@ -3,12 +3,18 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4040;
 
+app.get("/about", (req, res) => {
+  res.send(`<h3>About Route is Running 🐤</h3>`);
+});
+
+app.get("/help", (req, res) => {
+  res.send(`<h3>This is Help Page 🏖️</h3>`);
+});
+
 app.get("/", (req, res) => {
-  res.send("App is Running 🏆");
+  res.send(`<h3>App is Running 🏆</h3>`);
 });
 
 app.listen(PORT, () => {
   console.log(`App is Running on PORT ${PORT}`);
 });
-
-//video 4.7 this is the end game top of expressJS
