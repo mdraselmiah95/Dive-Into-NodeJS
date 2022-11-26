@@ -14,3 +14,5 @@ let pathObj = {
 };
 
 console.log(path.format(pathObj));
+
+console.log(path.isAbsolute(myCurrentPath));
