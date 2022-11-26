@@ -7,4 +7,4 @@ console.log(c.red.bold.underline("this is a bold green underlined message"));
 console.log(c.red("I am cool color."));
 console.log(9090);
 
-// npm uninstall => For removing package
+// npm uninstall => For removing package  total express
