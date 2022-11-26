@@ -10,4 +10,3 @@
 
 5. DELETE => Delete	: 	405 (Method Not Allowed), unless you want to delete the whole collection—not often desirable.
 
-// nodemon 
