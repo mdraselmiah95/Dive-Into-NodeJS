@@ -4,7 +4,7 @@ const http = require("http");
 
 const server = http.createServer((req, res) => {
   console.log(req.url);
-  res.end("<h3>Hello NodeJS. 🚷</h3>");
+  res.end("<h2>Hello NodeJS. 🚷</h2>");
 });
 
 server.listen(4040, () => {
