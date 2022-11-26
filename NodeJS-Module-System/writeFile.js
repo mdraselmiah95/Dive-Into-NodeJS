@@ -15,6 +15,6 @@ fs.writeFile("./testJson.json", data, (error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("File written Successfully");
+    console.log("File written Successfully 🌤️");
   }
 });
