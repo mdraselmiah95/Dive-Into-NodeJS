@@ -1,0 +1,11 @@
+=> Using HTTP Methods for RESTful Services
+
+1. POST => Create : 201 (Created), 'Location' header with link to /customers/{id} containing new ID.
+
+2. GET => Read : 200 (OK), list of customers. Use pagination, sorting and filtering to navigate big lists.
+
+3. PUT => Update/Replace : 405 (Method Not Allowed), unless you want to update/replace every resource in the entire collection.
+
+4. PATCH => Update/Modify	: 405 (Method Not Allowed), unless you want to modify the collection itself.
+
+5. DELETE => Delete	: 	405 (Method Not Allowed), unless you want to delete the whole collection—not often desirable.
