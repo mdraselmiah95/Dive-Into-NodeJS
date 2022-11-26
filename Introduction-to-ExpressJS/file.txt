@@ -1,4 +1,4 @@
-=> Using HTTP Methods for RESTful Services
+=> Using HTTP Methods for RESTful Services (CRUD)
 
 1. POST => Create : 201 (Created), 'Location' header with link to /customers/{id} containing new ID.
 
@@ -9,3 +9,5 @@
 4. PATCH => Update/Modify	: 405 (Method Not Allowed), unless you want to modify the collection itself.
 
 5. DELETE => Delete	: 	405 (Method Not Allowed), unless you want to delete the whole collection—not often desirable.
+
+// nodemon 
