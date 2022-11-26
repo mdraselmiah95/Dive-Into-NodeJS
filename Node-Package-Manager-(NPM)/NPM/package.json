@@ -10,5 +10,10 @@
     "NodeJS"
   ],
   "author": "Md.Rasel mia",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "chalk": "^5.1.2",
+    "uuid": "^9.0.0"
+  }
 }
