@@ -4,12 +4,13 @@ exports.getAllContact = (req, res) => {
   res.json(contacts.getAllContacts());
 };
 
+exports.createNewContact = (req, res) => {
+  console.log(req.body);
+  res.send("Create New Contact 🖱️");
+};
+
 // exports.getSingleContact = (req, res) => {
 //   res.send("I am Contact" + req.params.id);
-// };
-
-// exports.createNewContact = (req, res) => {
-//   res.send("Create New Contact 🖱️");
 // };
 
 // exports.updateContact = (req, res) => {

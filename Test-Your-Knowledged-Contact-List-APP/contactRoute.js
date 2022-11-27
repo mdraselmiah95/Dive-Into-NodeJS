@@ -2,15 +2,15 @@ const router = require("express").Router();
 
 const {
   getAllContact,
-  getSingleContact,
   createNewContact,
+  getSingleContact,
   updateContact,
   deleteContact,
 } = require("./contactController");
 
 router.get("/", getAllContact);
 
-// router.post("/", createNewContact);
+router.post("/", createNewContact);
 
 // router.get("/:id", getSingleContact);
 
