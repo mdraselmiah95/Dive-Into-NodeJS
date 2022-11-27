@@ -36,6 +36,10 @@ exports.updateContact = (req, res) => {
   res.json(contact);
 };
 
-// exports.deleteContact = (req, res) => {
-//   res.send("Delete Your Existing Contact 🏚️" + req.params.id);
-// };
+exports.deleteContact = (req, res) => {
+  let { id } = req.params;
+  id = parseInt(id);
+
+  let contact = contacts.deleteContactById(id);
+  res.json(contact);
+};

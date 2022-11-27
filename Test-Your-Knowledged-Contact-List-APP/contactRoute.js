@@ -3,7 +3,7 @@ const router = require("express").Router();
 const {
   getAllContact,
   createNewContact,
-  getSingleContact,
+  getContactsById,
   updateContact,
   deleteContact,
 } = require("./contactController");
@@ -12,10 +12,10 @@ router.get("/", getAllContact);
 
 router.post("/", createNewContact);
 
-// router.get("/:id", getSingleContact);
+router.get("/:id", getContactsById);
 
-// router.put("/:id", updateContact);
+router.put("/:id", updateContact);
 
-// router.delete("/:id", deleteContact);
+router.delete("/:id", deleteContact);
 
 module.exports = router;
