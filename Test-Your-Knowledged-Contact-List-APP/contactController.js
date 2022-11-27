@@ -5,8 +5,14 @@ exports.getAllContact = (req, res) => {
 };
 
 exports.createNewContact = (req, res) => {
-  console.log(req.body);
-  res.send("Create New Contact 🖱️");
+  let { name, phone, email } = req.body;
+  let contact = contacts.createContact({
+    name,
+    phone,
+    email,
+  });
+
+  res.json(contact);
 };
 
 // exports.getSingleContact = (req, res) => {
