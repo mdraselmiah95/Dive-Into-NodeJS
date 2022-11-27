@@ -15,13 +15,26 @@ exports.createNewContact = (req, res) => {
   res.json(contact);
 };
 
-// exports.getSingleContact = (req, res) => {
-//   res.send("I am Contact" + req.params.id);
-// };
+exports.getContactsById = (req, res) => {
+  let { id } = req.params;
+  id = parseInt(id);
 
-// exports.updateContact = (req, res) => {
-//   res.send("Update Your Existing Contact 🚧" + req.params.id);
-// };
+  let contact = contacts.getContactsById(id);
+  res.json(contact);
+};
+
+exports.updateContact = (req, res) => {
+  let { id } = req.params;
+  id = parseInt(id);
+
+  let { name, email, phone } = req.body;
+  let contact = contacts.updateContactById(id, {
+    name,
+    email,
+    phone,
+  });
+  res.json(contact);
+};
 
 // exports.deleteContact = (req, res) => {
 //   res.send("Delete Your Existing Contact 🏚️" + req.params.id);
