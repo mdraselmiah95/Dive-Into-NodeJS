@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4040;
 app.use("/user", userRouter);
 app.use("/posts", postRouter);
 app.get("/products/:productId", (req, res) => {
-  res.send("I am Product");
+  res.send("I am Product" + req.params.productId);
 });
 
 app.get("/", (req, res) => {
