@@ -1,5 +1,6 @@
 const express = require("express");
-const userRouter = require("./router");
+const userRouter = require("./UserRouter");
+const postRouter = require("./postRoute");
 
 const app = express();
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 4040;
 //User Router End 🔚
 
 app.use("/user", userRouter);
+app.use("/posts", postRouter);
 
 app.get("/", (req, res) => {
   res.send(`Server is Running 🏃‍♂️`);
