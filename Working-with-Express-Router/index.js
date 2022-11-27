@@ -1,8 +1,7 @@
 const express = require("express");
-const cors = require(cors);
 
 const app = express();
-app.use(cors());
+
 const PORT = process.env.PORT || 4040;
 
 // User Router
@@ -12,14 +11,16 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  rs.send("I am LogOut Route 📤");
+  res.send("I am LogOut Route 📤");
 });
 
 router.get("/signup", (req, res) => {
-  console.log("I am SignUp Route 👊");
+  res.send("I am SignUp Route 👊");
 });
 
-//User Router End
+//User Router End 🔚
+
+app.use("/user", router);
 
 app.get("/", (req, res) => {
   res.send(`Server is Running 🏃‍♂️`);
