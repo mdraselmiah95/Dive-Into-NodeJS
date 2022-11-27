@@ -39,3 +39,5 @@ class Contacts {
     return deletedObj;
   }
 }
+
+module.exports = new Contacts();

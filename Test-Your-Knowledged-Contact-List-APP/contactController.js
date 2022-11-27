@@ -3,7 +3,7 @@ exports.getAllContact = (req, res) => {
 };
 
 exports.getSingleContact = (req, res) => {
-  res.send("I am Contact" + req.params.contId);
+  res.send("I am Contact" + req.params.id);
 };
 
 exports.createNewContact = (req, res) => {
@@ -11,9 +11,9 @@ exports.createNewContact = (req, res) => {
 };
 
 exports.updateContact = (req, res) => {
-  res.send("Update Your Existing Contact 🚧" + req.params.contId);
+  res.send("Update Your Existing Contact 🚧" + req.params.id);
 };
 
 exports.deleteContact = (req, res) => {
-  res.send("Delete Your Existing Contact 🏚️" + req.params.contId);
+  res.send("Delete Your Existing Contact 🏚️" + req.params.id);
 };

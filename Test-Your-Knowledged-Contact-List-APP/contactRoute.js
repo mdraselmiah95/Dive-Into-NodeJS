@@ -10,12 +10,12 @@ const {
 
 router.get("/", getAllContact);
 
-router.get("/:contId", getSingleContact);
-
 router.post("/", createNewContact);
 
-router.put("/:contId", updateContact);
+router.get("/:id", getSingleContact);
 
-router.delete("/:contId", deleteContact);
+router.put("/:id", updateContact);
+
+router.delete("/:id", deleteContact);
 
 module.exports = router;
