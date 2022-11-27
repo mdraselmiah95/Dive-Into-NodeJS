@@ -12,9 +12,11 @@ const PORT = process.env.PORT || 4040;
 
 app.use("/user", userRouter);
 app.use("/posts", postRouter);
-app.get("/products/:productId", (req, res) => {
-  res.send("I am Product" + req.params.productId);
-});
+
+// app.get("/products/:productId/reviews/:reviewId", (req, res) => {
+//   console.log(req.params);
+//   res.send("I am Product" + req.params.productId);
+// });
 
 app.get("/", (req, res) => {
   res.send(`Server is Running 🏃‍♂️`);
