@@ -20,4 +20,4 @@ router.delete("/:postId", deletePost);
 
 module.exports = router;
 
-// video: 6.8
+// video: 7.2
