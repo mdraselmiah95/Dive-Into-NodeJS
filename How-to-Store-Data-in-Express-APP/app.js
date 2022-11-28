@@ -8,6 +8,8 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Mongoose Schema
+
 const { Schema } = mongoose;
 let testSchema = new Schema({
   name: String,
