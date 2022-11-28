@@ -24,9 +24,16 @@
     </p>
 
     <div>
-      <% if(post.published) { %>
+      <!-- <% if(post.published) { %>
       <h3>Title: <%= post.title%></h3>
       <h3>Body: <%= post.body%></h3>
+      <% } else %> -->
+
+      <% if(post.published){ %>
+      <h1>Title: <%= post.title %></h1>
+      <p>Body: <%= post.body %></p>
+      <% } else{%>
+      <p>Post is not yet publish</p>
       <% } %>
     </div>
   </body>

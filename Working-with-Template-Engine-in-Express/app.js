@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   let post = {
     title: "test title",
     body: "Test body",
-    published: false,
+    published: true,
   };
   res.render("index", { title: "EJS is an Awesome Template Engine 🔺", post });
 });
