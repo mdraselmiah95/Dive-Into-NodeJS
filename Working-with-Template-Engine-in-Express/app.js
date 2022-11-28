@@ -50,5 +50,3 @@ app.listen(PORT, () => {
 <%= EJS %>
 Embedded JavaScript templating. 
 */
-
-// video=>9.6
