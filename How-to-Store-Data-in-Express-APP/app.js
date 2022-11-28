@@ -16,7 +16,20 @@ let testSchema = new Schema({
 let Test = mongoose.model("Test", testSchema);
 
 app.get("/", (req, res) => {
-  res.json({ message: "This is welcome message" });
+  let test = new Test({
+    name: "Tom hank",
+  });
+  test
+    .save()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({
+        error: "Error Occurred",
+      });
+    });
 });
 
 const PORT = process.env.PORT || 4040;
