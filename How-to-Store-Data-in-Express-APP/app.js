@@ -8,11 +8,27 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const { Schema } = mongoose;
+let testSchema = new Schema({
+  name: String,
+});
+
+let Test = mongoose.model("Test", testSchema);
+
 app.get("/", (req, res) => {
   res.json({ message: "This is welcome message" });
 });
 
 const PORT = process.env.PORT || 4040;
-app.listen(PORT, () => {
-  console.log(`App is Running on PORT ${PORT}`);
-});
+mongoose
+  .connect(
+    `mongodb+srv://rasel_new:1234567890@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`
+  )
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`App is Running on PORT ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
