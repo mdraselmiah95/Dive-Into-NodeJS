@@ -10,7 +10,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.render("index", { title: "EJS is an Awesome Template Engine 🔺" });
+  let post = {
+    title: "test title",
+    body: "Test body",
+    published: false,
+  };
+  res.render("index", { title: "EJS is an Awesome Template Engine 🔺", post });
 });
 
 const PORT = process.env.PORT || 4040;
