@@ -40,8 +40,10 @@
 
     <div>
       <ul>
-        <% for(let p of posts){ %>
+        <% if(posts.length >0){ %> <% for(let p of posts){ %>
         <li><%= p.title %> By <%= p.author %></li>
+        <% } %> <% }else{ %>
+        <h3>No data Found 💥</h3>
         <% } %>
       </ul>
     </div>
