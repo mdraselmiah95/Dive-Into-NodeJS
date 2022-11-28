@@ -15,7 +15,18 @@ app.get("/", (req, res) => {
     body: "Test body",
     published: true,
   };
-  res.render("index", { title: "EJS is an Awesome Template Engine 🔺", post });
+  let posts = [
+    { title: "Title One", author: "Rasel mia" },
+    { title: "Title Two", author: "Rasel mia" },
+    { title: "Title Three", author: "Rasel mia" },
+    { title: "Title Four", author: "Rasel mia" },
+  ];
+
+  res.render("index", {
+    title: "EJS is an Awesome Template Engine 🔺",
+    post,
+    posts,
+  });
 });
 
 const PORT = process.env.PORT || 4040;

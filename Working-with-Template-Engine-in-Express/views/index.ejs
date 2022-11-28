@@ -36,5 +36,14 @@
       <p>Post is not yet publish</p>
       <% } %>
     </div>
+    <hr />
+
+    <div>
+      <ul>
+        <% for(let p of posts){ %>
+        <li><%= p.title %> By <%= p.author %></li>
+        <% } %>
+      </ul>
+    </div>
   </body>
 </html>
