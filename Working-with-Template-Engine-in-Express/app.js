@@ -9,6 +9,14 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get("/about", (req, res) => {
+  res.render("pages/about");
+});
+
+app.get("/help", (req, res) => {
+  res.render("pages/help");
+});
+
 app.get("/", (req, res) => {
   let post = {
     title: "test title",
@@ -22,7 +30,7 @@ app.get("/", (req, res) => {
     { title: "Title Four", author: "Rasel mia" },
   ];
 
-  res.render("index", {
+  res.render("pages/index", {
     title: "EJS is an Awesome Template Engine 🔺",
     post,
     posts,
@@ -36,5 +44,5 @@ app.listen(PORT, () => {
 
 /*
 <%= EJS %>
-Embedded JavaScript templating.
+Embedded JavaScript templating. 
 */
