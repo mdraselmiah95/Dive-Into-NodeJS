@@ -80,12 +80,13 @@
                       <button
                         class="btn btn-outline-primary edit-btn"
                         data-name="<%= contact.name  %> "
-                        data-name="<%= contact.phone  %> "
-                        data-name="<%= contact.email  %> "
-                        data-name="<%= contact._id  %>  "
+                        data-phone="<%= contact.phone  %> "
+                        data-email="<%= contact.email  %> "
+                        data-id="<%= contact._id  %>  "
                       >
                         EDIT
                       </button>
+
                       <a
                         href="/contacts/delete/<%= contact._id %> "
                         class="btn btn-outline-danger"
@@ -117,7 +118,7 @@
     ></script>
     <script>
       window.onload = function () {
-        let editBtns = document.getElementsByName("edit-btn");
+        let editBtns = document.getElementsByClassName("edit-btn");
 
         [...editBtns].forEach((btn) => {
           btn.addEventListener("click", function (e) {
