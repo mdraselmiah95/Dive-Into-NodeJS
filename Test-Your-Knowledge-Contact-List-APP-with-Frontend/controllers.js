@@ -62,24 +62,39 @@ exports.createContact = (req, res) => {
       });
   }
 
-  let contact = new Contact({
-    name,
-    email,
-    phone,
-  });
-  contact
-    .save()
-    .then((contact) => {
-      Contact.find().then((contacts) => {
-        return res.render("index", { contacts, error: {} });
+  if (id) {
+    Contact.findOneAndUpdate({ _id: id }, { $set: { name: email, phone } })
+      .then(() => {
+        Contact.find().then((contacts) => {
+          res.render("index", { contacts, error: {} });
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        return res.json({
+          message: "Error Occurred 💥",
+        });
       });
-    })
-    .catch((error) => {
-      console.log(error);
-      return res.json({
-        message: "Error Occurred 💥",
-      });
+  } else {
+    let contact = new Contact({
+      name,
+      email,
+      phone,
     });
+    contact
+      .save()
+      .then((contact) => {
+        Contact.find().then((contacts) => {
+          return res.render("index", { contacts, error: {} });
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        return res.json({
+          message: "Error Occurred 💥",
+        });
+      });
+  }
 };
 
 // Update Contact => 🥉

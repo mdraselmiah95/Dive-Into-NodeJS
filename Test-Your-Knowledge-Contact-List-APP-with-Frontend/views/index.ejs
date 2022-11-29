@@ -128,7 +128,6 @@
 
         [...editBtns].forEach((btn) => {
           btn.addEventListener("click", function (e) {
-            console.log(e.target.dataset);
             let { name, phone, email, id } = e.target.dataset;
             form[0].value = name;
             form[1].value = phone;
