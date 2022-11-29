@@ -29,5 +29,3 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
-// Video => 9.13  the top of the game of throne yae we you are the for the happy the coders trust food blogger nice and cooler the night machine nice the top of the side of
