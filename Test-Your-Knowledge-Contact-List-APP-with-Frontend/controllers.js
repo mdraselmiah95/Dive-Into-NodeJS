@@ -108,7 +108,10 @@ exports.deleteContact = (req, res) => {
   let { id } = req.params;
   Contact.findOneAndDelete({ _id: id })
     .then((contact) => {
-      res.json(contact);
+      // res.json(contact);
+      Contact.find().then((contacts) => {
+        res.render("index", { contacts, error: {} });
+      });
     })
     .catch((error) => {
       console.log(error);
