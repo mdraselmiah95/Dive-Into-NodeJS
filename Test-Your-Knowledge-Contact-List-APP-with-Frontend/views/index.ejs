@@ -23,7 +23,12 @@
       <div class="container">
         <div class="my-4">
           <h4 class="text-primary fw-bold">Create New Contacts:</h4>
-          <form action="/contacts" class="form-inline" method="POST">
+          <form
+            action="/contacts"
+            class="form-inline"
+            method="POST"
+            id="my-form"
+          >
             <div class="mb-3">
               <label class="form-label">Name:</label>
               <input type="text" class="form-control <%= error.name
@@ -33,7 +38,7 @@
 
             <div class="mb-3">
               <label class="form-label">Phone:</label>
-              <input type="number" class="form-control <%= error.phone
+              <input type="text" class="form-control <%= error.phone
               ?"is-invalid":"" %>" name="phone" id="" placeholder="phone" />
               <div class="invalid-feedback"><%= error.phone %></div>
             </div>
@@ -47,9 +52,9 @@
             </div>
 
             <div class="mb-3">
-              <input type="hidden" class="form-control" name="id" />
+              <input type="hidden" name="id" />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" value="Submit" class="btn btn-primary" />
           </form>
 
           <div>
@@ -119,10 +124,17 @@
     <script>
       window.onload = function () {
         let editBtns = document.getElementsByClassName("edit-btn");
+        let form = document.getElementById("my-form");
 
         [...editBtns].forEach((btn) => {
           btn.addEventListener("click", function (e) {
             console.log(e.target.dataset);
+            let { name, phone, email, id } = e.target.dataset;
+            form[0].value = name;
+            form[1].value = phone;
+            form[2].value = email;
+            form[3].value = id;
+            form[4].value = "update";
           });
         });
       };
