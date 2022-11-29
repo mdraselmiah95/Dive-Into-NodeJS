@@ -63,7 +63,7 @@ exports.createContact = (req, res) => {
   }
 
   if (id) {
-    Contact.findOneAndUpdate({ _id: id }, { $set: { name: email, phone } })
+    Contact.findOneAndUpdate({ _id: id }, { $set: { name, email, phone } })
       .then(() => {
         Contact.find().then((contacts) => {
           res.render("index", { contacts, error: {} });
