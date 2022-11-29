@@ -47,6 +47,21 @@ exports.createContact = (req, res) => {
     });
 };
 
-exports.updateContact = (req, res) => {};
+exports.updateContact = (req, res) => {
+  let { name, email, phone } = res.params;
+  let { id } = res.params;
+
+  Contact.findOneAndUpdate({ _id: id }, { $set: { name, email, phone } }),
+    { new: true }
+      .then((contact) => {
+        res.json(contact);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.json({
+          message: "Error Occurred 💥",
+        });
+      });
+};
 
 exports.deleteContact = (req, res) => {};
