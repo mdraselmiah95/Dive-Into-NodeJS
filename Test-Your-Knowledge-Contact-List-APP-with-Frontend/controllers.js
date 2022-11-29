@@ -4,7 +4,7 @@ exports.getAllContact = (req, res) => {
   Contact.find()
     .then((contacts) => {
       // res.json(contacts);
-      res.render("index", { contacts });
+      res.render("index", { contacts, error: {} });
     })
     .catch((error) => {
       console.log(error);
@@ -29,23 +29,53 @@ exports.getSingleContact = (req, res) => {
 };
 
 exports.createContact = (req, res) => {
-  let { name, phone, email } = req.body;
-  let contact = new Contact({
-    name,
-    email,
-    phone,
-  });
-  contact
-    .save()
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.json({
-        message: "Error Occurred 💥",
+  let { name, phone, id, email } = req.body;
+
+  let error = {};
+  if (!name) {
+    error.name = "Please Provide a Name 💥";
+  }
+
+  if (!phone) {
+    error.phone = "Please Provide a Phone Number 💥";
+  }
+
+  if (!email) {
+    error.email = "Please Provide a Email 💥";
+  }
+
+  let isError = Object.keys(error).length > 0;
+  if (isError) {
+    Contact.find()
+      .then((contacts) => {
+        res.render("index", { contacts, error });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.json({
+          message: "Error Occurred 💥",
+        });
       });
-    });
+  }
+  console.log(error, isError);
+  return;
+
+  // let contact = new Contact({
+  //   name,
+  //   email,
+  //   phone,
+  // });
+  // contact
+  //   .save()
+  //   .then((data) => {
+  //     res.json(data);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     res.json({
+  //       message: "Error Occurred 💥",
+  //     });
+  //   });
 };
 
 exports.updateContact = (req, res) => {

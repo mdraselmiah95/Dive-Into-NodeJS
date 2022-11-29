@@ -26,36 +26,24 @@
           <form action="/contacts" class="form-inline" method="POST">
             <div class="mb-3">
               <label class="form-label">Name:</label>
-              <input
-                type="text"
-                class="form-control"
-                name="name"
-                id=""
-                placeholder="Name"
-              />
+              <input type="text" class="form-control <%= error.name
+              ?"is-invalid":"" %> " name="name" id="" placeholder="Name" />
+              <div class="invalid-feedback"><%= error.name %></div>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone:</label>
-              <input
-                type="number"
-                class="form-control"
-                name="phone"
-                id=""
-                placeholder="phone"
-              />
+              <input type="number" class="form-control <%= error.phone
+              ?"is-invalid":"" %>" name="phone" id="" placeholder="phone" />
+              <div class="invalid-feedback"><%= error.phone %></div>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                name="email"
-                id=""
-                aria-describedby="emailHelpId"
-                placeholder="abc@mail.com"
-              />
+              <input type="email" class="form-control <%= error.email
+              ?"is-invalid":"" %>" name="email" id=""
+              aria-describedby="emailHelpId" placeholder="abc@mail.com" />
+              <div class="invalid-feedback"><%= error.email %></div>
             </div>
 
             <div class="mb-3">
