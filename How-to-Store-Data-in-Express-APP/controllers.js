@@ -67,4 +67,16 @@ exports.updateContact = (req, res) => {
     });
 };
 
-exports.deleteContact = (req, res) => {};
+exports.deleteContact = (req, res) => {
+  let { id } = req.params;
+  Contact.findOneAndDelete({ _id: id })
+    .then((contact) => {
+      res.json(contact);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.json({
+        message: "Error Occurred 💥",
+      });
+    });
+};
