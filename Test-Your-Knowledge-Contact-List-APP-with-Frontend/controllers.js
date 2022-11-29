@@ -120,5 +120,3 @@ exports.deleteContact = (req, res) => {
       });
     });
 };
-
-//10.5

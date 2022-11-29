@@ -77,7 +77,15 @@
                     <td><%= contact.phone %></td>
                     <td><%= contact.email %></td>
                     <td>
-                      <button class="btn btn-outline-primary">EDIT</button>
+                      <button
+                        class="btn btn-outline-primary edit-btn"
+                        data-name="<%= contact.name  %> "
+                        data-name="<%= contact.phone  %> "
+                        data-name="<%= contact.email  %> "
+                        data-name="<%= contact._id  %>  "
+                      >
+                        EDIT
+                      </button>
                       <a
                         href="/contacts/delete/<%= contact._id %> "
                         class="btn btn-outline-danger"
@@ -87,12 +95,6 @@
                     </td>
                   </tr>
                   <% } %>
-                  <!-- <tr class="table-primary">
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -113,5 +115,16 @@
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      window.onload = function () {
+        let editBtns = document.getElementsByName("edit-btn");
+
+        [...editBtns].forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            console.log(e.target.dataset);
+          });
+        });
+      };
+    </script>
   </body>
 </html>
