@@ -62,7 +62,7 @@ exports.createContact = (req, res) => {
       });
   }
 
-  if (id) {
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
     Contact.findOneAndUpdate({ _id: id }, { $set: { name, email, phone } })
       .then(() => {
         Contact.find().then((contacts) => {
