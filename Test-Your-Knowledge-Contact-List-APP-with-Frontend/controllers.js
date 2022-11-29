@@ -4,6 +4,7 @@ exports.getAllContact = (req, res) => {
   Contact.find()
     .then((contacts) => {
       res.json(contacts);
+      res.render("index");
     })
     .catch((error) => {
       console.log(error);
