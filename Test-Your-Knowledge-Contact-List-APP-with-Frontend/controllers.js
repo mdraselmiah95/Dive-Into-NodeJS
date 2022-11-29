@@ -1,5 +1,7 @@
 const Contact = require("./Contact");
 
+// Get All Contacts=> 🥈
+
 exports.getAllContact = (req, res) => {
   Contact.find()
     .then((contacts) => {
@@ -14,6 +16,7 @@ exports.getAllContact = (req, res) => {
     });
 };
 
+// Get Single Contact => 🥉
 exports.getSingleContact = (req, res) => {
   let { id } = req.params;
   Contact.findById(id)
@@ -28,6 +31,7 @@ exports.getSingleContact = (req, res) => {
     });
 };
 
+// Create Contact => 🥇
 exports.createContact = (req, res) => {
   let { name, phone, id, email } = req.body;
 
@@ -48,36 +52,37 @@ exports.createContact = (req, res) => {
   if (isError) {
     Contact.find()
       .then((contacts) => {
-        res.render("index", { contacts, error });
+        return res.render("index", { contacts, error });
       })
       .catch((error) => {
         console.log(error);
-        res.json({
+        return res.json({
           message: "Error Occurred 💥",
         });
       });
   }
-  console.log(error, isError);
-  return;
 
-  // let contact = new Contact({
-  //   name,
-  //   email,
-  //   phone,
-  // });
-  // contact
-  //   .save()
-  //   .then((data) => {
-  //     res.json(data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     res.json({
-  //       message: "Error Occurred 💥",
-  //     });
-  //   });
+  let contact = new Contact({
+    name,
+    email,
+    phone,
+  });
+  contact
+    .save()
+    .then((contact) => {
+      Contact.find().then((contacts) => {
+        return res.render("index", { contacts, error: {} });
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.json({
+        message: "Error Occurred 💥",
+      });
+    });
 };
 
+// Update Contact => 🥉
 exports.updateContact = (req, res) => {
   let { name, email, phone } = req.body;
   let { id } = req.params;
@@ -98,6 +103,7 @@ exports.updateContact = (req, res) => {
     });
 };
 
+// Delete Contact => 🥇
 exports.deleteContact = (req, res) => {
   let { id } = req.params;
   Contact.findOneAndDelete({ _id: id })
