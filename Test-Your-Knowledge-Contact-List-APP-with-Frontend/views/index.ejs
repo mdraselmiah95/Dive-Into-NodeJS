@@ -85,10 +85,18 @@
                 <tbody class="table-group-divider">
                   <% for( let contact of contacts ) { %>
                   <tr class="table-primary">
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
-                    <td>Item</td>
+                    <td scope="row"><%= contact.name %></td>
+                    <td><%= contact.phone %></td>
+                    <td><%= contact.email %></td>
+                    <td>
+                      <button class="btn btn-outline-primary">EDIT</button>
+                      <button
+                        href="/contacts/delete/<%= contact._id %> "
+                        class="btn btn-outline-danger"
+                      >
+                        DELETE
+                      </button>
+                    </td>
                   </tr>
                   <% } %>
                   <!-- <tr class="table-primary">

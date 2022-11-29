@@ -3,8 +3,8 @@ const Contact = require("./Contact");
 exports.getAllContact = (req, res) => {
   Contact.find()
     .then((contacts) => {
-      res.json(contacts);
-      res.render("index");
+      // res.json(contacts);
+      res.render("index", { contacts });
     })
     .catch((error) => {
       console.log(error);
