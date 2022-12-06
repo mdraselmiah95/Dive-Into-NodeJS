@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const router = require("./routes");
 
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 4040;
 mongoose
   .connect(
-    `mongodb+srv://rasel_new:1234567890@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     app.listen(PORT, () => {
