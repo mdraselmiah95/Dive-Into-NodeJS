@@ -10,9 +10,12 @@ app.set("views", "views");
 // TODO: middleware
 const middleware = [
   morgan("dev"),
+  express.static("public"),
   express.urlencoded({ extended: true }),
   express.json(),
 ];
+
+app.use(middleware);
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
