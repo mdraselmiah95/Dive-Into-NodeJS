@@ -22,4 +22,9 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Profile",
   },
+  timestamps: true,
 });
+
+const User = model("User", userSchema);
+
+module.exports = User;
