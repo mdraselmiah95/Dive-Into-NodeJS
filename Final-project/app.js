@@ -1,6 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 
+// TODO: Import Route
+const authRoutes = require("./routes/authRoute");
+
 const app = express();
 
 // TODO: Setup View Engine
@@ -17,8 +20,9 @@ const middleware = [
 
 app.use(middleware);
 
+app.use("/auth", authRoutes);
+
 app.get("/", (req, res) => {
-  res.render("pages/auth/signup", { title: "Create a new account" });
   res.send("Hello World");
 });
 
@@ -27,4 +31,4 @@ app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
 
-// ! video => 13.3 nice
+// ! video => 13.3
