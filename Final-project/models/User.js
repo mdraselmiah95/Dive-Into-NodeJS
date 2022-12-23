@@ -7,16 +7,16 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     maxlength: 30,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
     trim: true,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   profile: {
     type: Schema.Types.ObjectId,
