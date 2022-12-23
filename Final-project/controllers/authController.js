@@ -1,15 +1,19 @@
+const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 exports.signUpGetController = (req, res, next) => {
   res.render("pages/auth/signup", { title: "Create A New Account" });
 };
+
 exports.signUpPostController = async (req, res, next) => {
   let { username, email, password, confirmPassword } = req.body;
+
+  let hashedPassword = await bcrypt.hash(password, 11);
 
   let user = new User({
     username,
     email,
-    password,
+    password: hashedPassword,
   });
 
   try {

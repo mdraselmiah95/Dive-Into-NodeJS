@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config();
+mongoose.set("strictQuery", false);
 
 // TODO: Import Route
 const authRoutes = require("./routes/authRoute");
@@ -31,15 +32,17 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`,
+    { useNewUrlParser: true }
   )
   .then(() => {
+    console.log("DATABASE CONNECTED...");
     app.listen(PORT, () => {
       console.log(`App is Running on PORT ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log(error);
+    return console.log(error);
   });
 
 // ! video => 13.3
