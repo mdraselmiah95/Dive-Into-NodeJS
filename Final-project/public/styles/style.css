@@ -13,8 +13,8 @@ body {
 }
 
 footer {
-  min-height: 80px;
-  background: #222;
+  padding: 20px 0;
+  background: #343a40;
   color: #fff;
   text-align: center;
 }
