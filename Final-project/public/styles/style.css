@@ -9,10 +9,11 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 16px;
-  min-height: 700px;
   background: rgb(245, 245, 245);
 }
-
+.my-container {
+  min-height: 650px;
+}
 footer {
   padding: 20px 0;
   background: #343a40;
