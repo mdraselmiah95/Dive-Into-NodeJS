@@ -11,3 +11,10 @@ body {
   min-height: 700px;
   background: rgb(245, 245, 245);
 }
+
+footer {
+  min-height: 80px;
+  background: #222;
+  color: #fff;
+  text-align: center;
+}
