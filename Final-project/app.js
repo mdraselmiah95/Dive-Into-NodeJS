@@ -1,5 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 // TODO: Import Route
 const authRoutes = require("./routes/authRoute");
@@ -27,8 +29,17 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
-});
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`
+  )
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`App is Running on PORT ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 // ! video => 13.3

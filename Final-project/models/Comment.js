@@ -40,5 +40,3 @@ const commentSchema = new Schema(
 const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;
-
-// todo: finally we are the how
