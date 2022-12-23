@@ -1,5 +1,7 @@
-exports.signUp = (req, res, next) => {};
+exports.signUpGetController = (req, res, next) => {};
+exports.signUpPostController = (req, res, next) => {};
 
-exports.login = (req, res, next) => {};
+exports.loginGetController = (req, res, next) => {};
+exports.loginPostController = (req, res, next) => {};
 
-exports.logout = (req, res, next) => {};
+exports.logoutGetController = (req, res, next) => {};

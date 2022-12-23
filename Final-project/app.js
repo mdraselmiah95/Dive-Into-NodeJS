@@ -1,6 +1,18 @@
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
+
+// TODO: Setup View Engine
+app.get("view engine", "ejs");
+app.set("views", "views");
+
+// TODO: middleware
+const middleware = [
+  morgan("dev"),
+  express.urlencoded({ extended: true }),
+  express.json(),
+];
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
