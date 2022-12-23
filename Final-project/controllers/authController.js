@@ -8,15 +8,15 @@ exports.signUpGetController = (req, res, next) => {
 exports.signUpPostController = async (req, res, next) => {
   let { username, email, password, confirmPassword } = req.body;
 
-  let hashedPassword = await bcrypt.hash(password, 11);
-
-  let user = new User({
-    username,
-    email,
-    password: hashedPassword,
-  });
-
   try {
+    let hashedPassword = await bcrypt.hash(password, 11);
+
+    let user = new User({
+      username,
+      email,
+      password: hashedPassword,
+    });
+
     let createUser = await user.save();
     console.log("user created ", createUser);
     res.render("pages/auth/signup", { title: "Create A New Account" });
