@@ -2,10 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // TODO: Setup View Engine
-app.get("view engine", "ejs");
+app.set("view engine", "ejs");
 app.set("views", "views");
 
 // TODO: middleware
@@ -23,6 +22,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
