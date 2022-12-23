@@ -1,4 +1,4 @@
-// Name, Email, Password and Profile 🛸
+//* Name, Email, Password and Profile 🛸
 
 const { Schema, model } = require("mongoose");
 
