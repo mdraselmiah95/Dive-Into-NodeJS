@@ -1,21 +1,30 @@
+const {
+  allTodoGetController,
+  TodoGetByIdController,
+  TodoPostController,
+  TodoMultiplePostController,
+  TodoPutController,
+  TodoDeleteController,
+} = require("../controllers/todosController");
+
 const router = require("express").Router();
 
 //TODO: GET ALL THE TODOS
-router.get("/", async (req, res) => {});
+router.get("/", allTodoGetController);
 
 //TODO: GET A TODO BY ID
-router.get("/;id", async (req, res) => {});
+router.get("/:id", TodoGetByIdController);
 
 //TODO: POST TODO
-router.post("/", async (req, res) => {});
+router.post("/", TodoPostController);
 
 //TODO: POST MULTIPLE TODO
-router.get("/all", async (req, res) => {});
+router.get("/all", TodoMultiplePostController);
 
 //TODO: PUT TODO
-router.put("/:id", async (req, res) => {});
+router.put("/:id", TodoPutController);
 
 //TODO: DELETE TODO ID
-router.delete("/:id", async (req, res) => {});
+router.delete("/:id", TodoDeleteController);
 
 module.exports = router;
