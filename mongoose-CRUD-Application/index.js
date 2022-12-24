@@ -15,6 +15,10 @@ mongoose
 
 //* application routes
 
+app.get("/", (req, res) => {
+  res.send("hello");
+});
+
 //* default error handler
 function errorHandler(err, req, res, next) {
   if (res.headerSend) {
