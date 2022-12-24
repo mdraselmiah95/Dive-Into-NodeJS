@@ -11,6 +11,10 @@ exports.TodoPostController = async (req, res) => {
       res.status(500).json({
         error: "There was a server side error 💥",
       });
+    } else {
+      res.status(200).json({
+        error: "Todo was inserted successfully 🟢",
+      });
     }
   });
 };
