@@ -1,9 +1,17 @@
 const express = require("express");
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 
 //* express application initialization
 
 const app = express();
 app.use(express.json());
+
+//* database connection with mongoose
+mongoose
+  .connect("mongodb://localhost/todos")
+  .then(() => console.log("CONNECTION SUCCESSFUL"))
+  .catch((err) => console.log(err));
 
 //* application routes
 
