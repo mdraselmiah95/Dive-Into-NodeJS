@@ -33,4 +33,4 @@ app.listen(port, () => {
 
 //TODO: {npm/yarn run dev} to run nodemon server & to run node sever npm/yarn start
 
-//* video => 1:02:01
+//* video => 1:21:00
