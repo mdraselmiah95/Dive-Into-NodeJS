@@ -167,3 +167,4 @@ class TicketCollection {
 }
 
 const collection = new TicketCollection();
+module.exports = collection;
