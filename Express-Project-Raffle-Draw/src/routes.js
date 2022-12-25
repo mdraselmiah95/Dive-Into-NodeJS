@@ -8,6 +8,7 @@ const {
   updateByUsername,
   deleteById,
   deleteByUsername,
+  drawWinners,
 } = require("./controllers");
 
 const router = require("express").Router();
@@ -29,7 +30,7 @@ router
 // router.delete("/u/:username");
 
 router.post("/bulk", sellBulkTicket);
-router.get("/draw");
+router.get("/draw", drawWinners);
 
 router.route("/").get(findAll).post(sellSingleTicket);
 
