@@ -4,6 +4,8 @@ const {
   findAll,
   findByUsername,
   findById,
+  updateById,
+  updateByUsername,
 } = require("./controllers");
 
 const router = require("express").Router();
@@ -12,9 +14,9 @@ const router = require("express").Router();
 // router.put("/t/:id");
 // router.delete("/t/:id");
 
-router.route("/t/:id").get(findById).put().delete();
+router.route("/t/:id").get(findById).put(updateById).delete();
 
-router.route("/u/:username").get(findByUsername).put().delete();
+router.route("/u/:username").get(findByUsername).put(updateByUsername).delete();
 
 // router.get("/u/:username");
 // router.put("/u/:username");
