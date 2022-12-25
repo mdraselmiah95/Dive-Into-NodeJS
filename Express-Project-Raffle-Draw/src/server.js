@@ -23,3 +23,8 @@ app.use((error, req, res, next) => {
   }
   res.status(500).json({ message: "Something went wrong 💥" });
 });
+
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+  console.log(`Server is Listening on PORT`, port);
+});
