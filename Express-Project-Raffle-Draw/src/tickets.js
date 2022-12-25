@@ -5,9 +5,11 @@ const tickets = Symbol("tickets");
 
 class TicketCollection {
   constructor() {
-    this[tickets] = [];
+    (async function () {
+      this[tickets] = await readFile();
+      this[tickets] = data;
+    }.bind(this));
   }
-
   /**
    * *create and save a new ticket
    * @param {string} username

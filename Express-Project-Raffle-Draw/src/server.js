@@ -5,9 +5,7 @@ const morgan = require("morgan");
 const app = express();
 app.use([morgan("dev"), cors(), express.json()]);
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use("/api/v1/tickets", require("./routes"));
 
 app.get("/health", (req, res) => {
   res.status(200).json({ message: "Success" });
