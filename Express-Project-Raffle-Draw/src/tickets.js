@@ -138,6 +138,32 @@ class TicketCollection {
     );
     return deletedResult;
   }
+
+  /**
+   * Find winners
+   * @param {number} winnerCount
+   * @return {Ticket[]}
+   */
+  draw(winnerCount) {
+    const winnerIndexes = new Array(winnerCount);
+
+    let winnerIndex = 0;
+    while (winnerIndex < winnerCount) {
+      let ticketIndex = Math.floor(Math.random() * this[tickets].length);
+      if (!winnerIndexes.includes(ticketIndex)) {
+        winnerIndexes[winnerIndex++] = ticketIndex;
+        continue;
+      }
+    }
+
+    const winners = winnerIndexes.map(
+      /**
+       * @param {number} index
+       */
+      (index) => this[tickets][index]
+    );
+    return winners;
+  }
 }
 
 const collection = new TicketCollection();
