@@ -1,3 +1,5 @@
+const { sellBulkTicket, sellSingleTicket } = require("./controllers");
+
 const router = require("express").Router();
 
 // router.get("/t/:id");
@@ -12,10 +14,10 @@ router.route("/u/:username").get().put().delete();
 // router.put("/u/:username");
 // router.delete("/u/:username");
 
-router.post("/bulk");
+router.post("/bulk", sellBulkTicket);
 router.get("/draw");
 
-router.route("/").get().post();
+router.route("/").get().post(sellSingleTicket);
 
 // router.post("/");
 // router.get("/");

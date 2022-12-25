@@ -19,3 +19,19 @@ exports.sellBulkTicket = (req, res, next) => {
     tickets,
   });
 };
+
+// TODO: Find tickets controller
+
+exports.findAll = (req, res) => {
+  const tickets = ticketCollection.find();
+  res.status(200).json({ items: tickets, total: tickets.length });
+};
+
+exports.findById = (req, res) => {
+  const id = req.params.id;
+  const ticket = ticketCollection.findById(id);
+  if (!ticket) {
+    return res.status(404).json({ message: "404 not FOUND 💥" });
+  }
+  res.status(200).json(ticket);
+};
