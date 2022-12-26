@@ -1,17 +1,1 @@
-[
-  {
-    "id": "_NLg64y71",
-    "createAt": "2022-12-26T15:05:40.456Z",
-    "updateAt": "2022-12-26T15:05:40.456Z"
-  },
-  {
-    "id": "bCxjcW0WC",
-    "createAt": "2022-12-26T15:10:09.550Z",
-    "updateAt": "2022-12-26T15:10:09.550Z"
-  },
-  {
-    "id": "FDYxetgD1",
-    "createAt": "2022-12-26T15:17:41.309Z",
-    "updateAt": "2022-12-26T15:17:41.309Z"
-  }
-]
+[{"id":"xceu3oTsD","username":"Rasel mia","price":69,"createAt":"2022-12-26T16:11:56.506Z","updateAt":"2022-12-26T16:11:56.506Z"},{"id":"GxigEbf95","username":"Tom hank","price":79,"createAt":"2022-12-26T16:12:26.828Z","updateAt":"2022-12-26T16:12:26.828Z"},{"id":"6Zk51NQaS","username":"Morgan Freeman","price":59,"createAt":"2022-12-26T16:13:39.865Z","updateAt":"2022-12-26T16:13:39.865Z"},{"id":"WnsD07p0l","username":"Leonardo DiCaprio","price":99,"createAt":"2022-12-26T16:17:50.821Z","updateAt":"2022-12-26T16:17:50.821Z"},{"id":"xfFgahUtl","username":"Leonardo DiCaprio","price":197,"createAt":"2022-12-26T16:18:45.505Z","updateAt":"2022-12-26T16:18:45.505Z"},{"id":"zg4Lmwn1i","username":"Robert De Niro","price":92,"createAt":"2022-12-26T17:52:38.586Z","updateAt":"2022-12-26T17:52:38.586Z"},{"id":"sPC-vbBYM","username":"Jack Nicholson","price":99,"createAt":"2022-12-26T17:53:26.274Z","updateAt":"2022-12-26T17:53:26.274Z"}]

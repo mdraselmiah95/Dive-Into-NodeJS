@@ -14,3 +14,5 @@ exports.readFile = async () => {
 exports.writeFile = async (data) => {
   await fs.writeFile(dbPath, JSON.stringify(data));
 };
+
+// This is not same not too=> hot too some thing
