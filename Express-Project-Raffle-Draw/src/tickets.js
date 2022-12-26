@@ -67,13 +67,13 @@ class TicketCollection {
    * @return {Ticket[]}
    */
   findByUsername(username) {
-    const tickets = this[tickets].filter(
+    const userTickets = this[tickets].filter(
       /**
        * @param {Ticket} ticket
        */
       (ticket) => ticket.username === username
     );
-    return tickets;
+    return userTickets;
   }
 
   /**
