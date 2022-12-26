@@ -7,7 +7,7 @@ class TicketCollection {
   constructor() {
     (async function () {
       this[tickets] = await readFile();
-    }.bind(this));
+    }.call(this));
   }
   /**
    * *create and save a new ticket
@@ -176,3 +176,5 @@ class TicketCollection {
 
 const ticketCollection = new TicketCollection();
 module.exports = ticketCollection;
+
+// time will say not to cool
