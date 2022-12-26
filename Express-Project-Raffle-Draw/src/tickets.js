@@ -19,7 +19,7 @@ class TicketCollection {
     const ticket = new Ticket(username, price);
     this[tickets].push(ticket);
     writeFile(this[tickets]);
-    return tickets;
+    return ticket;
   }
 
   /**
@@ -176,5 +176,3 @@ class TicketCollection {
 
 const ticketCollection = new TicketCollection();
 module.exports = ticketCollection;
-
-// time will say not to cool
