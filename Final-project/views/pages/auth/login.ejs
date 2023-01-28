@@ -1,0 +1,43 @@
+<%- include("../../partials/header.ejs") %>
+
+<div class="container my-container my-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card card-body p-5">
+        <h4 class="mb-3">Login To Your Account:</h4>
+
+        <form action="/auth/signup" method="POST">
+          <div class="form-group">
+            <label for="email">Enter Your Valid Email (Must be Unique.)</label>
+            <input type="email" name="email" id="email" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="password"
+              >Enter A Strong Password (Must be Unique.)</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+            />
+          </div>
+
+          <input
+            type="submit"
+            value="SIGNUP"
+            class="btn btn-outline-primary mt-2"
+          />
+        </form>
+        <a href="/auth/signup" class="my-3 text-center"
+          >Don't have an Account? Create One</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("../../partials/footer.ejs") %>
+</body>
+</html>
