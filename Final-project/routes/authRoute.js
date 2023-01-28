@@ -19,7 +19,8 @@ const signupValidator = [
       if (user) {
         return Promise.reject("Username Already Used");
       }
-    }),
+    })
+    .trim(),
   body("email")
     .isEmail()
     .withMessage("Please Provide a Valid Email")
@@ -28,11 +29,20 @@ const signupValidator = [
       if (user) {
         return Promise.reject("Email Already Used");
       }
-    }),
+    })
+    .normalizeEmail(),
+  body("password")
+    .isLength({ min: 5 })
+    .withMessage("Your Password Must Be Greater Than 5 Chars"),
+  body("confirmPassword").custom((confirmPassword, { req }) => {
+    if (confirmPassword !== req.body) {
+      throw new Error("Password Does Not Match");
+    }
+  }),
 ];
 
 router.get("/signup", signUpGetController);
-router.post("/signup", signUpPostController);
+router.post("/signup", signupValidator, signUpPostController);
 
 router.get("/login", loginGetController);
 router.post("/login", loginPostController);
