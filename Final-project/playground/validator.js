@@ -11,13 +11,33 @@ router.post(
     check("username")
       .not()
       .isEmpty()
+      .withMessage("Username cannot be empty 🤦")
       .isLength({ max: 15 })
       .withMessage(`UserName can not be grater than 15 Character`),
     check("email").isEmail().withMessage("Please Provide a Valid Email 🌴"),
+    check("password").custom((value) => {
+      if (value.length < 5) {
+        throw new Error("Password must be greater than 5 characters");
+      }
+      return true;
+    }),
+    check("confirmPassword").custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error("Password Does Not Match ⚛️");
+      }
+      return true;
+    }),
   ],
   (req, res, next) => {
-    let error = validationResult(req);
-    console.log(error);
+    let errors = validationResult(req);
+
+    const formatter = (error) => error.msg;
+
+    console.log(errors.isEmpty());
+    console.log(errors.array());
+    console.log(errors.mapped());
+
+    console.log(errors.formatWith(formatter).mapped());
     res.render("playground/signup", { title: "Validator Playground" });
   }
 );
