@@ -57,3 +57,7 @@ exports.loginPostController = async (req, res, next) => {
 };
 
 exports.logoutController = (req, res, next) => {};
+
+//* Front End Validation
+//* Backend Validation
+//* Database Validation
