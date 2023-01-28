@@ -8,7 +8,7 @@ mongoose.set("strictQuery", false);
 const authRoutes = require("./routes/authRoute");
 
 // TODO: Playground Route
-const validatorRoutes = require("./playground/validator"); // TODO: Should be removed
+const validatorRoutes = require("./playGround/validator"); // TODO: Should be removed
 
 const app = express();
 
@@ -49,4 +49,4 @@ mongoose
     return console.log(error);
   });
 
-// ! video => 14.2
+// ! video => 14.9
