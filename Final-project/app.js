@@ -7,6 +7,9 @@ mongoose.set("strictQuery", false);
 // TODO: Import Route
 const authRoutes = require("./routes/authRoute");
 
+// TODO: Playground Route
+const validatorRoutes = require("./playground/validator"); // TODO: Should be removed
+
 const app = express();
 
 // TODO: Setup View Engine
@@ -24,6 +27,7 @@ const middleware = [
 app.use(middleware);
 
 app.use("/auth", authRoutes);
+app.use("/playground", validatorRoutes); // TODO: Should be removed
 
 app.get("/", (req, res) => {
   res.send("Hello World");
