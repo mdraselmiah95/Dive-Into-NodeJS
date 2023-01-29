@@ -9,6 +9,10 @@ mongoose.set("strictQuery", false);
 // TODO: Import Route
 const authRoutes = require("./routes/authRoute");
 
+// TODO: Import Middleware
+const { bindUserWithRequest } = require("./middleware/authMiddleware");
+const setLocals = require("./middleware/setLocals");
+
 // TODO: Playground Route
 
 const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.dkgxs.mongodb.net/?retryWrites=true&w=majority`;
@@ -16,6 +20,7 @@ const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}
 const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
+  expires: 1000 * 60 * 60 * 2,
 });
 
 const app = express();
@@ -34,7 +39,10 @@ const middleware = [
     secret: process.env.SECRET_KEY || "SECRET_KEY",
     resave: false,
     saveUninitialized: false,
+    store: store,
   }),
+  bindUserWithRequest(),
+  setLocals(),
 ];
 
 app.use(middleware);
@@ -59,5 +67,3 @@ mongoose
   });
 
 // ! video => 15.2
-
-//the
