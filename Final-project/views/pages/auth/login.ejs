@@ -9,24 +9,21 @@
         <form action="/auth/login" method="POST">
           <div class="form-group">
             <label for="email">Enter Your Valid Email (Must be Unique.)</label>
-            <input type="email" name="email" id="email" class="form-control" />
+            <input type="email" name="email" id="email" class="form-control <%=
+            error.eamil ? error.email : "" %> " />
           </div>
 
           <div class="form-group">
             <label for="password"
               >Enter A Strong Password (Must be Unique.)</label
             >
-            <input
-              type="password"
-              name="password"
-              id="password"
-              class="form-control"
-            />
+            <input type="password" name="password" id="password"
+            class="form-control <%= error.password ? error.password : "" %> " />
           </div>
 
           <input
             type="submit"
-            value="SIGNUP"
+            value="LOGIN"
             class="btn btn-outline-primary mt-2"
           />
         </form>
