@@ -46,7 +46,7 @@ exports.signUpPostController = async (req, res, next) => {
 };
 
 exports.loginGetController = (req, res, next) => {
-  console.log(req.get("Cookie"));
+  console.log(req.session.isLoggedIn, req.session.user);
   res.render("pages/auth/login", { title: "Login To Your Account", error: {} });
 };
 exports.loginPostController = async (req, res, next) => {
@@ -76,7 +76,8 @@ exports.loginPostController = async (req, res, next) => {
       });
     }
 
-    res.setHeader("Set-Cookie", "isLoggedIn=true");
+    req.session.isLoggedIn = true;
+    req.session.user = user;
     res.render("pages/auth/login", {
       title: "Login To Your Account",
       error: {},
@@ -92,3 +93,5 @@ exports.logoutController = (req, res, next) => {};
 //* Front End Validation
 //* Backend Validation
 //* Database Validation
+
+//wake up
