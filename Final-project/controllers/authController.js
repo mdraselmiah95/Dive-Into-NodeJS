@@ -83,7 +83,7 @@ exports.loginPostController = async (req, res, next) => {
         console.log(err);
         return next(err);
       }
-      redirect("/dashboard");
+      res.redirect("/dashboard");
     });
   } catch (error) {
     console.log(error);
@@ -104,5 +104,3 @@ exports.logoutController = (req, res, next) => {
 //* Front End Validation
 //* Backend Validation
 //* Database Validation
-
-//wake up
