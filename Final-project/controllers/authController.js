@@ -46,6 +46,7 @@ exports.signUpPostController = async (req, res, next) => {
 };
 
 exports.loginGetController = (req, res, next) => {
+  console.log(req.get("Cookie"));
   res.render("pages/auth/login", { title: "Login To Your Account", error: {} });
 };
 exports.loginPostController = async (req, res, next) => {
