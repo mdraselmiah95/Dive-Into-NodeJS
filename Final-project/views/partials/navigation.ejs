@@ -20,12 +20,19 @@
               >DASHBOARD</a
             >
           </li>
+
+          <% if(isLoggedIn) {%>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="/auth/logout">Logout</a>
+          </li>
+          <%}else{%>
           <li class="nav-item">
             <a class="nav-link text-light" href="/auth/login">LOGIN</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="/auth/signup">SIGNUP</a>
           </li>
+          <% } %>
         </ul>
         <form class="d-flex" role="search">
           <input
