@@ -8,6 +8,7 @@ mongoose.set("strictQuery", false);
 
 // TODO: Import Route
 const authRoutes = require("./routes/authRoute");
+const dashboardRoutes = require("./routes/dashboardRoute");
 
 // TODO: Import Middleware
 const { bindUserWithRequest } = require("./middleware/authMiddleware");
@@ -48,6 +49,7 @@ const middleware = [
 app.use(middleware);
 
 app.use("/auth", authRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
