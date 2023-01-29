@@ -10,7 +10,10 @@
           <div class="form-group">
             <label for="email">Enter Your Valid Email (Must be Unique.)</label>
             <input type="email" name="email" id="email" class="form-control <%=
-            error.eamil ? error.email : "" %> " />
+            error.email ? "is-invalid" : "" %> " />
+            <div class="invalid-feedback">
+              <%= error.email && error.email %>
+            </div>
           </div>
 
           <div class="form-group">
@@ -18,7 +21,10 @@
               >Enter A Strong Password (Must be Unique.)</label
             >
             <input type="password" name="password" id="password"
-            class="form-control <%= error.password ? error.password : "" %> " />
+            class="form-control <%= error.password ? "is-invalid" : "" %> " />
+            <div class="invalid-feedback">
+              <%= error.password && error.password %>
+            </div>
           </div>
 
           <input

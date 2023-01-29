@@ -75,8 +75,11 @@ exports.loginPostController = async (req, res, next) => {
       });
     }
 
-    console.log("Successfully Login", user);
-    res.render("pages/auth/login", { title: "Login To Your Account" });
+    res.setHeader("Set-Cookie", "isLoggedIn=true");
+    res.render("pages/auth/login", {
+      title: "Login To Your Account",
+      error: {},
+    });
   } catch (error) {
     console.log(error);
     next(error);
