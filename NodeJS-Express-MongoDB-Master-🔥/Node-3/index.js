@@ -3,6 +3,7 @@ const express = require("express");
 // const index = fs.readdirSync("index.html", "utf-8");
 const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
 const products = data.products;
+const morgan = require("morgan");
 
 const app = express();
 const PORT = 3000;
@@ -11,6 +12,7 @@ const PORT = 3000;
 app.use(express.json());
 // app.use(express.urlencoded());
 app.use(express.static("public"));
+app.use(morgan("dev"));
 
 app.use((req, res, next) => {
   console.log(
@@ -24,21 +26,21 @@ app.use((req, res, next) => {
 });
 
 const auth = (req, res, next) => {
-  console.log(req.query);
-  if (req.query.password == "123") {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
+  // if (req.query.password == "123") {
+  //   next();
+  // } else {
+  //   res.sendStatus(401);
+  // }
   next();
 };
 
 // API - Endpoint - Route
 
-app.get("/", auth, (req, res) => {
+app.get("/product/:id", auth, (req, res) => {
+  console.log(req.params);
   res.json({ type: "GET" });
 });
-//Rop
+
 app.post("/", (req, res) => {
   res.json({ type: "POST" });
 });
