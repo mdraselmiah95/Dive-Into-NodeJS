@@ -1,6 +1,7 @@
 const fs = require("fs");
 const express = require("express");
 const other = require("./other");
+const colors = require("colors");
 
 const app = express();
 const PORT = 3000;
@@ -10,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`App is Running on PORT ${PORT}`);
+  console.log(colors.rainbow(`App is Running on PORT ${PORT}`));
 });
 
 // const time1 = performance.now();
