@@ -1,0 +1,109 @@
+Skip to main content
+Get Started
+TS for the New Programmer
+TypeScript for JS Programmers
+TS for Java/C# Programmers
+TS for Functional Programmers
+TypeScript Tooling in 5 minutes
+Handbook
+Reference
+Tutorials
+What's New
+Declaration Files
+JavaScript
+Project Configuration
+TypeScript for the New Programmer
+Congratulations on choosing TypeScript as one of your first languages — you’re already making good decisions!
+
+Y
+console.log(4 / []);
+This syntactically-legal program logs Infinity. TypeScript, though, considers division of number by an array to be a nonsensical operation, and will issue an error:
+
+
+Contributors to this page:
+OTOrta Therox  (19)EBEli Barzilay  (2)谭谭九鼎  (1)LLalit  (1)Ggraue70  (1)2+
+Last updated: Feb 07, 2023
+
+This page loaded in 1.285 seconds.
+
+Customize
+Site Colours:
+
+
+System
+Code Font:
+
+
+Cascadia
+Popular Documentation Pages
+Everyday Types
+All of the common types in TypeScript
+
+Creating Types from Types
+Techniques to make more elegant types
+
+More on Functions
+How to provide types to functions in JavaScript
+
+More on Objects
+How to provide a type shape to JavaScript objects
+
+Narrowing
+How TypeScript infers types based on runtime behavior
+
+Variable Declarations
+How to create and type JavaScript variables
+
+TypeScript in 5 minutes
+An overview of building a TypeScript web app
+
+TSConfig Options
+All the configuration options for a project
+
+Classes
+How to provide types to JavaScript ES6 classes
+
+Made with ♥ in Redmond, Boston, SF & Dublin
+
+Microsoft Logo
+© 2012-2023 Microsoft
+Privacy
+
+Using TypeScript
+Get Started
+Download
+Community
+Playground
+TSConfig Ref
+Why TypeScript
+Design
+Code Samples
+
+Community
+Get Help
+Blog
+GitHub Repo
+Community Chat
+@TypeScript
+Stack Overflow
+Web Repohghghghg
+Navigated to TypeScript for the New ProgrammerSkip to main content
+Get Started
+TS for the New Programmer
+TypeScript for JS Programmers
+TS for Java/C# Programmers
+TS for Functional Programmers
+TypeScript Tooling in 5 minutes
+Handbook
+Reference
+Tutorials
+What's New
+Declaration Files
+JavaScript
+Project Configuration
+TypeScript for the New Programmer
+Congratulations on choosing TypeScript as one of your first languages — you’re already making good decisions!
+
+You’ve probably already heard that TypeScript is a “flavor” or “variant” of JavaScript. The relationship between TypeScript (TS) and JavaScript (JS) is rather unique among modern programming languages, so learning more about this relationship will help you understand how TypeScript adds to JavaScript.
+
+What is JavaScript? A Brief History
