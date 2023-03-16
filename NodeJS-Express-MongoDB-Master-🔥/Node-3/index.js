@@ -7,6 +7,33 @@ const products = data.products;
 const app = express();
 const PORT = 3000;
 
+app.use((req, res, next) => {
+  console.log(
+    req.method,
+    req.ip,
+    req.hostname,
+    new Date(),
+    req.get("User-Agent")
+  );
+  next();
+});
+
+const auth = (req, res, next) => {
+  console.log(req.query);
+  if (req.query.password == "123") {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+  next();
+};
+
+// API - Endpoint - Route
+
+app.get("/", auth, (req, res) => {
+  res.json({ type: "GET" });
+});
+//Rop
 app.post("/", (req, res) => {
   res.json({ type: "POST" });
 });
