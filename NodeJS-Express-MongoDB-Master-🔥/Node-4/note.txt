@@ -1,0 +1,13 @@
+***REST***
+
+
+CREATE  =>POST  =>Data in Request Body =/student
+
+READ    =>GET   =>Find Data in URL params =/student/:id
+                  No data =/student
+
+UPDATE  =>PUT   =>Find Data in URL params =/student/:id
+                  Update Data in req body
+
+
+DELETE  =>DELETE    =>Find Data in URL params =/student/:id
