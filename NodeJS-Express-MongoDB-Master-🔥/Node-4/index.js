@@ -4,7 +4,8 @@ const morgan = require("morgan");
 const data = JSON.parse(fs.readFileSync("data.json", "utf-8"));
 const products = data.products;
 
-const productController = require("./controller/product");
+// Route
+const productRoute = require("./routes/product.route");
 
 const app = express();
 const PORT = 3000;
@@ -19,24 +20,14 @@ app.get("/", (req, res) => {
 // TODO: APT ROOT , Base URL, example - google.com/api/v2
 
 // Products
+app.use("/api/v1/products", productRoute);
 
 // Create POST/products             C R U D
-app.post("/products", productController.createProduct);
-
 // Read All Product GET
-app.get("/products", productController.getAllProduct);
-
-// Read GET /products/:id
-app.get("/products/:id", productController.getProductById);
-
-// Update PUT /products/:id all update
-app.put("/products/:id", productController.updateProductById);
-
-// Update PATCH /products/:id single item update
-app.patch("/products/:id", productController.updateSingleProductById);
-
 // DELETE /products/:id
-app.delete("/products/:id", productController.deleteProduct);
+// Read GET /products/:id
+// Update PUT /products/:id all update
+// Update PATCH /products/:id single item update
 
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
