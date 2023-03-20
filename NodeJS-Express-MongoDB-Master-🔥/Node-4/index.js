@@ -22,12 +22,14 @@ app.get("/", (req, res) => {
 // Products
 app.use("/api/v1/products", productRoute);
 
-// Create POST/products             C R U D
-// Read All Product GET
-// DELETE /products/:id
-// Read GET /products/:id
-// Update PUT /products/:id all update
-// Update PATCH /products/:id single item update
+/**
+ * Create POST/products       C R U D
+ * Read All Product GET
+ * DELETE /products/:id
+ * Read GET /products/:id
+ * Update PUT /products/:id all update
+ * Update PATCH /products/:id single item update
+ */
 
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
