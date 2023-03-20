@@ -14,10 +14,18 @@ app.get("/", (req, res) => {
   res.send("Hello World 🏛️");
 });
 
+// TODO: APT ROOT , Base URL, example - google.com/api/v2
+
 // Products
 
 app.get("/products", (req, res) => {
   res.json(products);
+});
+
+app.get("/products/:id", (req, res) => {
+  const id = +req.params.id;
+  const product = products.find((p) => p.id === id);
+  res.json(product);
 });
 
 app.listen(PORT, () => {
