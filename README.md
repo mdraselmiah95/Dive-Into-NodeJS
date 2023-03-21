@@ -134,3 +134,107 @@ server.get("/demo", function (req, res) {
   res.send(req.query); // send back same data in response object
 });
 ```
+
+To install MONGODB NODE.JS DRIVER use this command
+
+```javascript
+npm install mongodb
+```
+
+You can setup database in Node server using following commands :
+
+```javascript
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
+// Connection URL
+const url = "mongodb://localhost:27017";
+// Database Name
+const dbName = "myproject";
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, client) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server");
+  const db = client.db(dbName);
+});
+```
+
+### [[Chapter Notes]]
+
+**Mongo Server**
+
+- You can install **MongoDB community server** for your system and set the **Path** to `bin` folder
+- You can choose your own database path while starting the **mongod** server
+
+```
+ mongod --dbpath <path-to-db-directory>
+```
+
+**Mongo Compass** : UI Client to see mongo server (local or remote)
+
+**Mongo Shell** : Command-line based mongo client for checking mongo database.
+
+Some Mongo Commands:
+
+### Top Level commands :
+
+(run from anywhere inside the shell)
+
+- show dbs;
+- use < database-name > - to choose a database and go inside its prompt
+
+### Database CRUD commands :
+
+(run only from inside a database)
+
+#### CREATE COMMANDS
+
+- db.< collectionName >.insertOne( _newDocument_ )
+- db.< collectionName >.insertMany( _documentArray_ )
+
+#### READ COMMANDS
+
+- db.< collectionName >.**find**( _filterObject_ ) - to read all docs
+- db.< collectionName >.**findOne**( _filterObject_ ) - to read one document
+- db.< collectionName >.**countDocuments**( _filterObject_ ) - shows total number of documents.
+
+**filter** Object : _{ fieldName : {operator: value}}_
+fieldName : database fields name
+**operator** : $eq = equal , $gt= greater than, $lt : less than, $gte = greater than equal, $and and $or operator
+**value** : what value we are comparing with operator.
+
+e.g { age : {$gt:5}}. - **age** is **greater than** value **5**
+
+**Cursor functions :**
+These are applied to find() query .
+
+- **sort**( {fieldName: 1}) : 1 for ascending -1 for descending
+- **limit**( x ) : only gives x documents
+
+#### UPDATE COMMANDS
+
+- db.< collectionName >.**updateOne**( _filterObject_, _updateObject_, options )
+  - update Objects = _{ $set : {field: value}}_
+  - options : _{upsert: true}_
+
+**Upsert** : Update + Insert, when we want a new info to create a new objects if no existing object matches filter queries.
+
+- db.< collectionName >.**replaceOne**( _filterObject_, _updateObject_ )
+  Overwrites other fields also which are not in updateObject.
+
+#### DELETE COMMANDS
+
+- db.< collectionName >.**deleteOne**( _filterObject_ )
+
+**Projection**
+
+- Only return selected fields while returning result documents.
+- db.< collectionName >.find( _filterObject_, projectionObject )
+  e.g. {name:1, age:1, id:0} - only show **name** and **age** and don't show **id**
+
+**MONGO ATLAS CLOUD SETUP** : Check the video in tutorial
+
+** Environment Variable** : To use environment variable we can use a npm package called **dotenv** which will create new **process.env** variables.
+
+- Install `dotenv` using `npm install dotenv`
+- just have use `.env` file in your root directory
+- and call `require('dotenv').config()`

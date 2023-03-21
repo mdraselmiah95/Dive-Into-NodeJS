@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// Route the will come findOne {} and fine []
+
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
