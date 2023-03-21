@@ -1,19 +1,35 @@
 const Product = require("../model/product.model");
 
-exports.createProduct = (req, res) => {
-  const product = new Product();
-  product.title = "Phone X";
-  product.price = 9888;
-  product.rating = 5;
-  product.save((err, doc) => {
-    console.log(err, doc);
-  });
-  res.status(201).json(req.body);
+exports.createProduct = async (req, res) => {
+  try {
+    const result = await Product.create(req.body);
+    console.log(result);
+    res.status(200).json({
+      status: "Success",
+      message: "Successfully Create the Product",
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Fail",
+      error: "Couldn't create the Product",
+    });
+  }
 };
 
-// exports.getAllProduct = (req, res) => {
-//   res.json(products);
-// };
+exports.getAllProduct = async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.status(200).json({
+      status: "Success",
+      data: products,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Fail",
+      error: "Couldn't create the Product",
+    });
+  }
+};
 
 // exports.getProductById = (req, res) => {
 //   const id = +req.params.id;

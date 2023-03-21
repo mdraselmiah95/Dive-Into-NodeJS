@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-// Route
+// Route main to the main the nice and cool
 app.use("/api/v1/products", productRoute);
 
 app.listen(process.env.PORT, () => {
