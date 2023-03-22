@@ -89,10 +89,25 @@ exports.updateSingleProductById = async (req, res) => {
   }
 };
 
-// exports.deleteProduct = (req, res) => {
-//   const id = +req.params.id;
-//   const index = products.findIndex((p) => p.id === id);
-//   const product = products[index];
-//   products.splice(index, 1);
-//   res.status(200).json(product);
-// };
+exports.deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await Product.deleteOne({ _id: id });
+    if (!result.deletedCount) {
+      return res.status(400).json({
+        status: "fail",
+        error: "Could't delete the product",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      message: "Successfully Deleted the Product 🥈",
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: "Couldn't not Deleted the product.",
+      error: error.message,
+    });
+  }
+};
