@@ -238,3 +238,73 @@ These are applied to find() query .
 - Install `dotenv` using `npm install dotenv`
 - just have use `.env` file in your root directory
 - and call `require('dotenv').config()`
+
+### [[Reading Material]]
+
+You can install mongoose using npm :
+
+```bash
+npm install mongoose
+```
+
+After installing , you can import mongoose to your project :
+
+```js
+const mongoose = require("mongoose");
+```
+
+#### Connection to Database
+
+To connect mongoose to your database `test`, you have to use the following commands :
+
+```js
+var mongoose = require("mongoose");
+await mongoose.connect("mongodb://127.0.0.1:27017/test");
+```
+
+Connection can also be stored in a variable to check whether it is connected properly or not. Also to disconnect database later on. You can read more details [Here](https://mongoosejs.com/docs/connections.html)
+
+#### Schema
+
+Schema is the specification according to which data object is created in Database.
+
+`taskSchema` which contains `title`, `status`, `date` fields. So every task object saved in database will have these 3 fields according to Schema given
+
+```js
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const taskSchema = new Schema({
+  title: String,
+  status: Boolean,
+  date: { type: Date, default: Date.now },
+});
+```
+
+Many types of data are allowed in Mongoose Schema. The common SchemaTypes are:
+
+- String
+- Number
+- Date
+- Boolean
+- Mixed
+- ObjectId
+- Array
+
+You can put a lot of conditions inside the Schema object :
+
+```js
+    age: { type: Number, default:18, min: 18, max: 65, required :true }
+    // default value of Number is 18 and should be between 18-65, and can't be null or empty
+```
+
+```js
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+const taskSchema = new Schema({
+  title: String,
+  status: Boolean,
+  date: { type: Date, default: Date.now },
+});
+
+const Task = mongoose.model("Task", taskSchema); //Task Model to create new database objects for `tasks` Collection
+```

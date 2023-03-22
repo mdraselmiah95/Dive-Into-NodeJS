@@ -46,6 +46,24 @@ exports.getProductById = async (req, res) => {
   }
 };
 
+exports.replaceProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await Product.findOneAndReplace({ _id: id }, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      status: "success",
+      data: doc,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error: "Couldn't Replace the Product.",
+    });
+  }
+};
+
 // exports.updateProductById = (req, res) => {
 //   const id = +req.params.id;
 //   const productIndex = products.findIndex((p) => p.id === id);
@@ -53,13 +71,23 @@ exports.getProductById = async (req, res) => {
 //   res.status(200).json();
 // };
 
-// exports.updateSingleProductById = (req, res) => {
-//   const id = +req.params.id;
-//   const index = products.findIndex((p) => p.id === id);
-//   const product = products[index];
-//   products.splice(index, 1, { ...product, ...req.body });
-//   res.status(200).json();
-// };
+exports.updateSingleProductById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await Product.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      status: "success",
+      data: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error: "Couldn't Replace the Product.",
+    });
+  }
+};
 
 // exports.deleteProduct = (req, res) => {
 //   const id = +req.params.id;

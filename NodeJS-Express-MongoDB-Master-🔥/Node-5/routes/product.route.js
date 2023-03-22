@@ -7,10 +7,12 @@ router
   .post(productController.createProduct)
   .get(productController.getAllProduct);
 
-router.route("/:id").get(productController.getProductById);
+router
+  .route("/:id")
+  .get(productController.getProductById)
+  .put(productController.replaceProduct)
+  .patch(productController.updateSingleProductById);
 //   .put(productController.updateProductById)
-//   .patch(productController.updateSingleProductById)
 //   .delete(productController.deleteProduct);
 
 module.exports = router;
-// This will make many thing
