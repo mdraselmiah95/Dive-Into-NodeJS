@@ -13,6 +13,9 @@ app.use(morgan("dev"));
 // Route
 const productRoute = require("./routes/product.route");
 
+// var mongoose = require("mongoose");
+// mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
+
 // DB connection
 main().catch((err) => console.log(err));
 
@@ -31,3 +34,5 @@ app.use("/api/v1/products", productRoute);
 app.listen(process.env.PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
+
+//This is the

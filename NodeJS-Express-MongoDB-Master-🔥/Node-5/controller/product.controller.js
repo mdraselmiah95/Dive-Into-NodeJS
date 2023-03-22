@@ -30,11 +30,21 @@ exports.getAllProduct = async (req, res) => {
   }
 };
 
-// exports.getProductById = (req, res) => {
-//   const id = +req.params.id;
-//   const product = products.find((p) => p.id === id);
-//   res.json(product);
-// };
+exports.getProductById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await Product.findById(id);
+    res.status(200).json({
+      status: "success",
+      data: product,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Fail",
+      error: "Couldn't find the Product.",
+    });
+  }
+};
 
 // exports.updateProductById = (req, res) => {
 //   const id = +req.params.id;
