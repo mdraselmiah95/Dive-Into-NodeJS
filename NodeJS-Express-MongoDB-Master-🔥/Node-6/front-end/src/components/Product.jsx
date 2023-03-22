@@ -2,48 +2,50 @@ import React from "react";
 import "./Product.css";
 
 const Product = ({ product }) => {
-  console.log(product);
+  const { title, thumbnail, rating, price, discountPercentage } = product;
+  const discounted_price = Math.round(
+    price - (price * discountPercentage) / 100
+  );
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-3">
-          <div className="card">
-            <div className="image-container">
-              <div className="first">
-                <div className="d-flex justify-content-between align-items-center">
-                  <span className="discount">-25%</span>
-                  <span className="wishlist">
-                    <i className="fa fa-heart-o"></i>
-                  </span>
-                </div>
-              </div>
+    <div className="col">
+      <div className="card">
+        <div className="image-container">
+          <div className="first">
+            <div className="d-flex justify-content-between align-items-center">
+              <span className="discount">-25%</span>
+              <span className="wishlist">
+                <i className="bi bi-heart"></i>
+              </span>
+            </div>
+          </div>
 
-              <img
-                src="**url**"
-                className="img-fluid rounded thumbnail-image"
-                alt=""
-              />
+          <img
+            style={{ width: "300px", height: "220px" }}
+            src={thumbnail}
+            className="img-fluid rounded thumbnail-image"
+            alt=""
+          />
+        </div>
+
+        <div className="product-detail-container p-2">
+          <div className="d-flex justify-content-between align-items-center">
+            <h5 className="dress-name">{title}</h5>
+
+            <div className="d-flex flex-column mb-2">
+              <span className="new-price"> $ {price}</span>
+              <small className="old-price text-right">
+                $ {discounted_price}
+              </small>
+            </div>
+          </div>
+
+          <div className="d-flex justify-content-between align-items-center pt-1">
+            <div>
+              <i className="fa fa-star-o rating-star"></i>
+              <span className="rating-number">{rating}</span>
             </div>
 
-            <div className="product-detail-container p-2">
-              <div className="d-flex justify-content-between align-items-center">
-                <h5 className="dress-name">**title**</h5>
-
-                <div className="d-flex flex-column mb-2">
-                  <span className="new-price">&#8377 **price**</span>
-                  <small className="old-price text-right">&#8377 700</small>
-                </div>
-              </div>
-
-              <div className="d-flex justify-content-between align-items-center pt-1">
-                <div>
-                  <i className="fa fa-star-o rating-star"></i>
-                  <span className="rating-number">**rating**</span>
-                </div>
-
-                <span className="buy">BUY +</span>
-              </div>
-            </div>
+            <span className="buy">BUY +</span>
           </div>
         </div>
       </div>
