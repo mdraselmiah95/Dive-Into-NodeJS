@@ -1,9 +1,9 @@
+import axios from "axios";
 import React from "react";
-import { useForm, useWatch } from "react-hook-form";
-import Button from "react-bootstrap/Button";
+import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
-  const { handleSubmit, register, control, reset } = useForm({});
+  const { handleSubmit, register, reset } = useForm({});
 
   const productCategory = ["smartphones", "laptops", "skincare", "fragrances"];
   const productBrand = [
@@ -13,13 +13,23 @@ const AddProduct = () => {
     "Huawei",
     "Microsoft Surface",
     "Impression of Acqua Di Gio",
+    "HP",
   ];
 
-  // const term = useWatch({ control, name: "term" });
-
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (product) => {
+    addProduct(product);
     reset();
+  };
+
+  const addProduct = async (product) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/products",
+        product
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -65,6 +75,19 @@ const AddProduct = () => {
             />
           </div>
 
+          <div className="w-100 flex-column d-flex">
+            <label className="mb-2 form-label" htmlFor="rating">
+              Product Rating:
+            </label>
+            <input
+              className=" form-control"
+              type="number"
+              id="rating"
+              step="any"
+              {...register("rating")}
+            />
+          </div>
+
           <div className="d-flex flex-column w-100">
             <label className="mb-3 form-label" htmlFor="category">
               Product Category :
@@ -106,6 +129,7 @@ const AddProduct = () => {
             <input
               className=" form-control"
               type="number"
+              step="any"
               id="discountPercentage"
               {...register("discountPercentage")}
             />
