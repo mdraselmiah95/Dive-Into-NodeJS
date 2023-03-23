@@ -1,11 +1,26 @@
 import React from "react";
 import "./Product.css";
+import axios from "axios";
 
-const Product = ({ product }) => {
-  const { title, thumbnail, rating, price, discountPercentage } = product;
+const Product = ({ product, setProducts, products }) => {
+  const { _id, title, thumbnail, rating, price, discountPercentage } = product;
   const discounted_price = Math.round(
     price - (price * discountPercentage) / 100
   );
+
+  const handleClick = async (id) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:8080/api/v1/products/${id}`,
+        product
+      );
+      if (res.status === 200) {
+        setProducts(products.filter((item) => item._id !== id));
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="col">
       <div className="card">
@@ -13,8 +28,8 @@ const Product = ({ product }) => {
           <div className="first">
             <div className="d-flex justify-content-between align-items-center">
               <span className="discount">-25%</span>
-              <span className="wishlist">
-                <i className="bi bi-heart"></i>
+              <span className="wishlist btn">
+                <i className="bi bi-heart" onClick={() => handleClick(_id)}></i>
               </span>
             </div>
           </div>

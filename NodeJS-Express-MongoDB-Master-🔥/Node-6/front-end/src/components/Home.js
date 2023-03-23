@@ -17,14 +17,19 @@ const Home = () => {
 
   return (
     <div className="container my-5">
-      <div className="row row-cols-1 row-cols-md-3 g-3">
-        {products?.map((product) => (
-          <Product product={product} key={product._id} />
-        ))}
-      </div>
-      <button className="btn btn-outline-dark">
+      <button className="btn btn-outline-dark my-3">
         <Link to="addProduct">Add-Product</Link>
       </button>
+      <div className="row row-cols-1 row-cols-md-3 g-3">
+        {products?.map((product) => (
+          <Product
+            product={product}
+            key={product._id}
+            setProducts={setProducts}
+            products={products}
+          />
+        ))}
+      </div>
     </div>
   );
 };
