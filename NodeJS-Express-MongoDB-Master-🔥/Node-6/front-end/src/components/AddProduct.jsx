@@ -30,31 +30,50 @@ const AddProduct = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="w-100 flex-column d-flex">
-            <label className="mb-2" htmlFor="title">
+            <label className="mb-2 form-label" htmlFor="title">
               Product Title:
             </label>
-            <input type="text" id="title" {...register("title")} />
+            <input
+              className=" form-control"
+              type="text"
+              id="title"
+              {...register("title")}
+            />
           </div>
 
           <div className="w-100 flex-column d-flex">
-            <label className="mb-2" htmlFor="thumbnail">
+            <label className="mb-2 form-label" htmlFor="thumbnail">
               Product Thumbnail:
             </label>
-            <input type="text" id="thumbnail" {...register("thumbnail")} />
+            <input
+              className=" form-control"
+              type="text"
+              id="thumbnail"
+              {...register("thumbnail")}
+            />
           </div>
 
           <div className="w-100 flex-column d-flex">
-            <label className="mb-2" htmlFor="price">
+            <label className="mb-2 form-label" htmlFor="price">
               Product Price:
             </label>
-            <input type="number" id="price" {...register("price")} />
+            <input
+              className=" form-control"
+              type="number"
+              id="price"
+              {...register("price")}
+            />
           </div>
 
           <div className="d-flex flex-column w-100">
-            <label className="mb-3" htmlFor="category">
+            <label className="mb-3 form-label" htmlFor="category">
               Product Category :
             </label>
-            <select {...register("category")} id="category">
+            <select
+              className=" form-select"
+              {...register("category")}
+              id="category"
+            >
               {productCategory
                 .sort((a, b) => a.localeCompare(b))
                 .map((category, index) => (
@@ -66,10 +85,10 @@ const AddProduct = () => {
           </div>
 
           <div className="d-flex  w-100 flex-column">
-            <label className="mb-3" htmlFor="brand">
+            <label className="mb-3 form-label" htmlFor="brand">
               Product Brand :
             </label>
-            <select {...register("brand")} id="brand">
+            <select className=" form-select" {...register("brand")} id="brand">
               {productBrand
                 .sort((a, b) => a.localeCompare(b))
                 .map((brand, index) => (
@@ -81,10 +100,11 @@ const AddProduct = () => {
           </div>
 
           <div className="w-100 flex-column d-flex">
-            <label className="mb-2" htmlFor="discountPercentage">
+            <label className="mb-2 form-label" htmlFor="discountPercentage">
               Product Discount:
             </label>
             <input
+              className=" form-control"
               type="number"
               id="discountPercentage"
               {...register("discountPercentage")}

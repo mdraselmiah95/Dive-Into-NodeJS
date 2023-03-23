@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Product from "./Product";
 
 const Home = () => {
@@ -21,6 +22,9 @@ const Home = () => {
           <Product product={product} key={product._id} />
         ))}
       </div>
+      <button className="btn btn-outline-dark">
+        <Link to="addProduct">Add-Product</Link>
+      </button>
     </div>
   );
 };
