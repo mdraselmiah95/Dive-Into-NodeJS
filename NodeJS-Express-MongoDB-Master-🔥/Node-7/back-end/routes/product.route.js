@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../controller/product.controller");
 
+//SSR
+router.route("/ssr").get(productController.getAllProductsSSR);
+
 router
   .route("/")
   .post(productController.createProduct)
