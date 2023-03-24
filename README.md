@@ -633,3 +633,47 @@ res.sendFile(path.resolve(__dirname, "build", "index.html"));
 - After every change, commit your changes - and push code on github.
 - You have to provide permission for github directory to vercel. It will pickup `vercel.json` and `package.json` and deploy your code accordingly.
 - Check video for more details.
+
+### [[Chapter Notes]]
+
+Server side rendering is done using many templating languages
+
+- EJS
+- Pug
+- Handlebars
+
+We have used EJS which is one of the most popular one.
+
+Install
+`npm install ejs`
+
+- Control flow with `<% %>`
+- Escaped output with `<%= %>` (escape function configurable)
+
+```pug
+<% if (product) { %>
+ <h2><%= product.title %></h2>
+<% } %>
+```
+
+For passing variable to template engine and render a new page :
+
+```javascript
+const ejs = require("ejs");
+ejs.renderFile(
+  path.resolve(__dirname, "../pages/index.ejs"),
+  { products: products },
+  function (err, str) {
+    res.send(str); // this is the rendered HTML
+  }
+);
+```
+
+### How to send HTML FORM data to Express
+
+- You need to have input boxes have proper `name` which will be used as `key` to objects sent to backend. Mostly in form like `name=value`
+- use **action** or for API destination
+  `action="/products"`
+- use **method** or for API type
+  `method="POST"`
+- use **enctype** with value `application/x-form-urlencoded`

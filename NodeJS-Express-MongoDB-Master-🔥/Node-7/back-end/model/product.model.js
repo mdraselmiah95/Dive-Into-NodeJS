@@ -2,34 +2,23 @@ const mongoose = require("mongoose");
 
 const productSchema = mongoose.Schema(
   {
-    title: {
-      type: String,
-      trim: true,
-      required: [true, "Please provide a name for this product."],
-    },
+    title: { type: String, required: true },
     description: String,
-    price: {
+    price: { type: Number, min: [0, "wrong price"], required: true },
+    discountPercentage: {
       type: Number,
-      required: true,
-      min: [0, "Product price can't be negative"],
+      min: [0, "wrong min discount"],
+      max: [50, "wrong max discount"],
     },
-    discountPercentage: Number,
     rating: {
       type: Number,
-      required: [true, "Please provide a Rating for this product."],
-      min: 0,
-      max: 5,
+      min: [0, "wrong min rating"],
+      max: [5, "wrong max rating"],
+      default: 0,
     },
-    brand: {
-      type: String,
-      trim: true,
-      unique: true,
-      required: [true, "Please Provide a Brand Name"],
-      maxLength: 100,
-      lowercase: true,
-    },
-    category: String,
-    thumbnail: String,
+    brand: { type: String, required: true },
+    category: { type: String, required: true },
+    thumbnail: { type: String, required: true },
     images: [String],
   },
   { timestamps: true }
