@@ -17,12 +17,16 @@ app.use(express.static(process.env.PUBLIC_DIR));
 // app.use(express.static(path.resolve(__dirname, process.env.PUBLIC_DIR)));
 
 // TODO: Path Deceleration
-app.use("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
+// app.use("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "build", "index.html"));
+// });
 
 // Route
 const productRoute = require("./routes/product.route");
+const userRoute = require("./routes/user.route");
+
+// var mongoose = require("mongoose");
+// mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
 
 // DB connection
 main().catch((err) => console.log(err));
@@ -34,6 +38,7 @@ async function main() {
 
 // Route
 app.use("/api/v1/products", productRoute);
+app.use("/user", userRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
