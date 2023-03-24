@@ -15,9 +15,9 @@ app.use(morgan("dev"));
 app.use(express.static(process.env.PUBLIC_DIR));
 
 // TODO: Path Deceleration
-// app.use("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "build", "index.html"));
-// });
+app.use("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
 
 // Route
 const productRoute = require("./routes/product.route");
