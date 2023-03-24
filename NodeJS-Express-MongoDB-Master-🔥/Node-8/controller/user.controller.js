@@ -1,10 +1,12 @@
 const User = require("../model/user.model");
+const jwt = require("jsonwebtoken");
 
 exports.getAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const user = await User.find();
     res.status(200).json({
       status: "success",
+      data: user,
       message: "Successfully Get the User Data.",
     });
   } catch (error) {
@@ -17,7 +19,10 @@ exports.getAllUsers = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   try {
-    const result = await User.create(req.body);
+    const user = await User.create(req.body);
+    const token = jwt.sign({ email: req.body.email }, process.env.KEY);
+    user.token = token;
+    user.save();
     res.status(200).json({
       status: "Success",
       message: "Successfully User the Product 🥈",

@@ -677,3 +677,74 @@ ejs.renderFile(
 - use **method** or for API type
   `method="POST"`
 - use **enctype** with value `application/x-form-urlencoded`
+
+#### JWT library installation
+
+    	`npm install jsonwebtoken`
+
+- Use jwt.io to understand 3 parts of JWT - headers, payload, signature
+
+#### Signing of JWT
+
+`jwt.sign(payload, secret)` this returns a **token**
+
+#### verifying a JWT token
+
+`jwt.verify(token, secret)` this returns decoded value of **payload**
+
+We will use HTTP Authorization headers for exchanging these tokens
+e.g. `Authorization = 'Bearer JWT_TOKEN_VALUE'`
+**Using RSA algorithm** (public-private key) : check video.
+
+### Password Hashing
+
+you can use a library like `bcrypt` to hash password, so they are not stored in plain text format
+
+#### Installation :
+
+`npm install bcrypt`
+
+#### Hashing
+
+`bcrypt.hashSync(userProvidedPassword, saltRounds)`
+
+#### Verifying Password
+
+`bcrypt.compareSync(loginPassword, AlreadyHashedPassword)`
+return `true` of `false` based on verification of password
+
+Session middleware is used to store session variable for each user on server side. This middleware can make use of any data storage depending on settings. By default it stores session variables in Memory (RAM).
+First install express-session middleware
+
+```shell
+npm install express-session
+```
+
+Now you can use it in your express server
+
+```js
+var server = express();
+const session = require("express-session");
+server.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // make secure : true incase you are using HTTPS
+  })
+);
+```
+
+Now you can use `req.session` object to store any value for a particular user in server session. This value will not interact with similar variable of other users.
+
+```js
+server.get("/user", function (req, res) {
+  if (req.session.views) {
+    req.session.views++;
+    res.json({ views: req.session.views });
+  } else {
+    req.session.views = 1;
+    res.send("welcome to the session demo. refresh!");
+  }
+});
+```

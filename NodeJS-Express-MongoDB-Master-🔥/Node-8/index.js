@@ -4,9 +4,25 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require("path");
+const jtw = require("jsonwebtoken");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+//bodyParser
+const auth = (req, res, next) => {
+  try {
+    const token = req.get("Authorization").split("Bearer ")[1];
+    const decoded = jwt.verify(token, process.env.KEY);
+    if (decoded.email) {
+      next();
+    } else {
+      res.sendStatus(401);
+    }
+  } catch (err) {
+    res.sendStatus(401);
+  }
+};
 
 // Middleware
 app.use(express.json());
@@ -24,6 +40,7 @@ app.use(express.static(process.env.PUBLIC_DIR));
 // Route
 const productRoute = require("./routes/product.route");
 const userRoute = require("./routes/user.route");
+const { JsonWebTokenError } = require("jsonwebtoken");
 
 // var mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
