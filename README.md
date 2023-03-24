@@ -617,3 +617,19 @@ res.sendFile(path.resolve(__dirname, "build", "index.html"));
 ```
 
 `__dirname` is a variable
+
+### [[Chapter Notes]]
+
+**Preparation for deployment**
+
+- First check whether front-end routes are independent of server, and make all of them relative to `/`
+- Connect MongoDB atlas - in-place of mongo local database
+
+### How to Deploy to Vercel :
+
+- Commit you code on a github account (personal account for free services)
+- Set Environment Variables on Vercel - like MONGO_URL, PUBLIC_DIR
+- Put a vercel config file - `vercel.json` in your project root directory.
+- After every change, commit your changes - and push code on github.
+- You have to provide permission for github directory to vercel. It will pickup `vercel.json` and `package.json` and deploy your code accordingly.
+- Check video for more details.
