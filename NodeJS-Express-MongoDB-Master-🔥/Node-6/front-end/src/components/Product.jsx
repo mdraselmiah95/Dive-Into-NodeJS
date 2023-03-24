@@ -10,10 +10,7 @@ const Product = ({ product, setProducts, products }) => {
 
   const handleClick = async (id) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:8080/api/v1/products/${id}`,
-        product
-      );
+      const res = await axios.delete(`/api/v1/products/${id}`, product);
       if (res.status === 200) {
         setProducts(products.filter((item) => item._id !== id));
       }
