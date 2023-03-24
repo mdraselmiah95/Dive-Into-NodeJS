@@ -1,8 +1,33 @@
 const User = require("../model/user.model");
 
 exports.getAllUsers = async (req, res) => {
-  const users = await User.find();
-  res.json(users);
+  try {
+    const users = await User.find();
+    res.status(200).json({
+      status: "success",
+      message: "Successfully Get the User Data.",
+    });
+  } catch (error) {
+    res.status(400).status({
+      status: "error",
+      error: "Couldn't Get The User Data",
+    });
+  }
+};
+
+exports.createUser = async (req, res) => {
+  try {
+    const result = await User.create(req.body);
+    res.status(200).json({
+      status: "Success",
+      message: "Successfully User the Product 🥈",
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "Fail",
+      error: "Couldn't create the User",
+    });
+  }
 };
 
 exports.getUser = async (req, res) => {
