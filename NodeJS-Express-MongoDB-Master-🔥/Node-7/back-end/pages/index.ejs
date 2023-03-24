@@ -188,16 +188,21 @@
     bottom: 5px;
   }
 </style>
+
+
 <script>
     async function deleteProduct (product){
-      console.log(product)
-      const response = await fetch('/products/'+product, {
+      console.log(_id);
+      const response = await fetch('/api/v1/products/'+product, {
              method: 'DELETE'});
       const doc  =  await response.json()
+      console.log(doc._id);
       const el = document.getElementById(doc._id);
       el.remove();
     }
 </script>
+
+
 <% for (let product of products) { %>
 <% if(product) { %>
 <div class="container mt-5" id="<%=product._id %>">
@@ -208,7 +213,7 @@
           <div class="first">
             <div class="d-flex justify-content-between align-items-center">
               <span class="discount">-<%=product.discountPercentage %>%</span>
-              <!-- <span class="wishlist"><i class="fa fa-heart-o" onclick="deleteProduct('<%= product._id %>')"></i></span> -->
+              <span class="wishlist btn"><i class="fa fa-heart-o" onclick="deleteProduct('<%= product._id %>')"></i></span>
             </div>
           </div>
           <img
