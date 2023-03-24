@@ -24,7 +24,7 @@ const auth = (req, res, next) => {
   }
 };
 
-// Middleware
+// TODO: Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -37,7 +37,7 @@ app.use(express.static(process.env.PUBLIC_DIR));
 //   res.sendFile(path.resolve(__dirname, "build", "index.html"));
 // });
 
-// Route
+// TODO: Route
 const productRoute = require("./routes/product.route");
 const userRoute = require("./routes/user.route");
 const authRoute = require("./routes/auth.route");
@@ -45,7 +45,7 @@ const authRoute = require("./routes/auth.route");
 // var mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
 
-// DB connection
+// TODO: DB connection
 main().catch((err) => console.log(err));
 
 async function main() {
@@ -53,7 +53,7 @@ async function main() {
   console.log("Database Connect");
 }
 
-// Route
+// TODO: Route
 app.use("/api/v1/products", productRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
