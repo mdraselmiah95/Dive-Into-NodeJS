@@ -4,12 +4,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require("path");
-const jtw = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-//bodyParser
+// BodyParser
 const auth = (req, res, next) => {
   try {
     const token = req.get("Authorization").split("Bearer ")[1];
@@ -40,7 +40,7 @@ app.use(express.static(process.env.PUBLIC_DIR));
 // Route
 const productRoute = require("./routes/product.route");
 const userRoute = require("./routes/user.route");
-const { JsonWebTokenError } = require("jsonwebtoken");
+const authRoute = require("./routes/auth.route");
 
 // var mongoose = require("mongoose");
 // mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
@@ -56,6 +56,7 @@ async function main() {
 // Route
 app.use("/api/v1/products", productRoute);
 app.use("/user", userRoute);
+app.use("/auth", authRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
