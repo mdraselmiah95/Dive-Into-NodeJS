@@ -4,7 +4,12 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const publicKey = fs.readFileSync(
+  path.resolve(__dirname, "./public.key"),
+  "utf-8"
+);
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 const auth = (req, res, next) => {
   try {
     const token = req.get("Authorization").split("Bearer ")[1];
-    const decoded = jwt.verify(token, process.env.KEY);
+    const decoded = jwt.verify(token, publicKey);
     if (decoded.email) {
       next();
     } else {
