@@ -15,6 +15,15 @@ exports.getAllProductsSSR = async (req, res) => {
   );
 };
 
+exports.getAddForm = async (req, res) => {
+  ejs.renderFile(
+    path.resolve(__dirname, "../pages/add.ejs"),
+    function (err, str) {
+      res.send(str);
+    }
+  );
+};
+
 exports.createProduct = async (req, res) => {
   try {
     const result = await Product.create(req.body);

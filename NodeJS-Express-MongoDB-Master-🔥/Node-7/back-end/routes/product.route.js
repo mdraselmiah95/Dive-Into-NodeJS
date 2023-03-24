@@ -5,6 +5,8 @@ const productController = require("../controller/product.controller");
 //SSR
 router.route("/ssr").get(productController.getAllProductsSSR);
 
+router.route("/add").get(productController.getAddForm);
+
 router
   .route("/")
   .post(productController.createProduct)
