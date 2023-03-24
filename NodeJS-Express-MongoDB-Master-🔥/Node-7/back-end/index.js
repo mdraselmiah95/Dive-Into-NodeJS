@@ -12,13 +12,13 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-// app.use(express.static(process.env.PUBLIC_DIR));
-server.use(express.static(path.resolve(__dirname, process.env.PUBLIC_DIR)));
+app.use(express.static(process.env.PUBLIC_DIR));
+// app.use(express.static(path.resolve(__dirname, process.env.PUBLIC_DIR)));
 
 // TODO: Path Deceleration
-app.use("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
+// app.use("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "build", "index.html"));
+// });
 
 // Route
 const productRoute = require("./routes/product.route");
