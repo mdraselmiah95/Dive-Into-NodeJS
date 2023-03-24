@@ -35,17 +35,18 @@ exports.login = async (req, res) => {
     const doc = await User.findOne({ email: req.body.email });
     const isAuth = bcrypt.compareSync(req.body.password, doc.password);
     if (isAuth) {
-      let token = jwt.sign({ email: req.body.email }, privateKey, {
+      var token = jwt.sign({ email: req.body.email }, privateKey, {
         algorithm: "RS256",
       });
-      res.json({ token });
+      doc.token = token;
+      console.log(token);
+      const result = await User.findByIdAndUpdate(token, (doc.token = token), {
+        new: true,
+      });
     } else {
       res.sendStatus(401);
     }
-  } catch (error) {
-    res.status(401).json({
-      status: "Unauthorized ",
-      error: "The server's request was not verified 🔥",
-    });
+  } catch (err) {
+    res.status(401).json(err);
   }
 };
