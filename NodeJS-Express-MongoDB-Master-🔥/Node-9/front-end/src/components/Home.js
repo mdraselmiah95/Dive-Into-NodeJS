@@ -19,15 +19,14 @@ const Home = () => {
     getProducts();
   }, []);
 
+  // Sorting Front-end
+
   const handleSort = async (e) => {
     console.log(e.target.value);
     const field = e.target.value.split(".");
     const res = await axios.get(`/products?sort=${field[0]}&order=${field[1]}`);
-    console.log(res.data);
-    setProducts(res.data);
+    setProducts(res.data.data);
   };
-
-  // top of
 
   return (
     <div className="container my-5">

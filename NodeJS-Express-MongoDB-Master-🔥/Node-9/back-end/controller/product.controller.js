@@ -43,10 +43,22 @@ exports.createProduct = async (req, res) => {
 exports.getAllProduct = async (req, res) => {
   try {
     let query = Product.find();
+    let pageSize = 4;
+    let page = req.query.page;
     if (req.query.sort) {
       const products = await query
         .sort({ [req.query.sort]: req.query.order })
-        .limit(req.query.limit)
+        .skip(pageSize * (page - 1))
+        .limit(pageSize)
+        .exec();
+      res.status(200).json({
+        status: "Success",
+        data: products,
+      });
+    } else if (req.query.page) {
+      const products = await query
+        .skip(pageSize * (page - 1))
+        .limit(pageSize)
         .exec();
       res.status(200).json({
         status: "Success",
@@ -54,10 +66,7 @@ exports.getAllProduct = async (req, res) => {
       });
     } else {
       const products = await query.exec();
-      res.status(200).json({
-        status: "Success",
-        data: products,
-      });
+      res.json(products);
     }
   } catch (error) {
     res.status(400).json({
