@@ -75,7 +75,9 @@ io.on("connection", (socket) => {
     console.log({ data });
   });
 
-  socket.emit("serverMsg", { server: "Rasel mia" });
+  setTimeout(() => {
+    socket.emit("serverMsg", { server: "Hi, Rasel mia" });
+  }, 4000);
 });
 
 server.listen(process.env.PORT, () => {

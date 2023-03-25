@@ -3,7 +3,11 @@
 <script>
   const socket=io()
   console.log("socket",socket.id);
-  socket.emit("msg",{player:"one"})
+
+  setTimeout(()=>{
+    socket.emit("msg",{player:"one"})
+  },5000)
+  
   socket.on("serverMsg",(data)=>{
     console.log(data);
   })
