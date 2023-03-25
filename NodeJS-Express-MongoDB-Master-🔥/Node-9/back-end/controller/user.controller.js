@@ -20,7 +20,7 @@ exports.getAllUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
   const id = req.params.id;
   console.log({ id });
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate("cart"); // Populate Cart Products
   res.json(user);
 };
 exports.replaceUser = async (req, res) => {

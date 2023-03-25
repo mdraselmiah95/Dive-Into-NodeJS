@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const userSchema = mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: String,
+  cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
   email: {
     type: String,
     unique: true,
