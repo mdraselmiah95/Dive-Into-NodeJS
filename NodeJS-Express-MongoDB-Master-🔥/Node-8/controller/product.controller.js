@@ -29,6 +29,7 @@ exports.createProduct = async (req, res) => {
     const result = await Product.create(req.body);
     res.status(200).json({
       status: "Success",
+      data: result,
       message: "Successfully Create the Product 🥈",
     });
   } catch (error) {
@@ -41,7 +42,8 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProduct = async (req, res) => {
   try {
-    const products = await Product.find({});
+    let query = Product.find();
+    const products = await query.sort({ price: -1 }).exec();
     res.status(200).json({
       status: "Success",
       data: products,
@@ -49,7 +51,7 @@ exports.getAllProduct = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       status: "Fail",
-      error: "Couldn't create the Product",
+      error: "Couldn't Get the Products",
     });
   }
 };
