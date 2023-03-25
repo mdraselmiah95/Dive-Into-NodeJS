@@ -748,3 +748,105 @@ server.get("/user", function (req, res) {
   }
 });
 ```
+
+### Mongoose Queries
+
+**Sorting**:
+
+find().**sort**({fieldName: 1}) // ascending can be _1, asc, ascending_ , Descending values can be _-1, desc, descending_
+
+**Pagination related queries**:
+
+find().**limit**(pageSize).**skip**( pageSize\*(pageNumber-1)) // where **pageSize** is number of document results you want to show.
+
+**Population**
+
+Populate() lets you reference documents in other collections.
+
+```js
+const userSchema = new Schema({
+  firstName: { type: String, required: true },
+  lastName: String,
+  cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+  email: {
+    type: String,
+    unique: true,
+    validate: {
+      validator: function (v) {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid email!`,
+    },
+    required: true,
+  },
+  password: { type: String, minLength: 6, required: true },
+  token: String,
+});
+
+//cart populated example
+const user = await User.findById(id).populate("cart");
+```
+
+#### Node Events and Event Emitter
+
+```javascript
+const em = new EventEmitter();
+em.on(eventName, (payloadData) => {}); // listeners
+em.emit(eventName, payloadData); // emit events
+```
+
+#### Node Streams
+
+A readable stream
+
+```javascript
+const rr = fs.createReadStream("./data.json");
+rr.on("data", (data) => {
+  // received data event on every file read
+  console.log({ data });
+});
+rr.on("end", (data) => {
+  // received end of stream event
+  console.log({ data });
+});
+```
+
+### Socket in Node (Socket.IO)
+
+#### Install Socket IO library
+
+`npm install socket.io`
+
+#### Server Side Code
+
+```javascript
+const  server  =  express();
+const  app  =  require('http').createServer(server);
+const  io  =  require('socket.io')(app);
+io.on('connection', (socket) => {
+console.log('socket',socket.id)
+socket.on('msg',(data)=>{ // listener to client-side events 'msg'
+console.log({data})
+})
+socket.emit('serverMsg',{server:'hi'} //emitting 'serverMsg' for Client-side
+});
+app.listen(port)
+```
+
+#### Client Side Code
+
+```html
+// embeding client-side library which will be downloaded from module installed
+on Server
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  const socket = io();
+  console.log("socket", socket.id);
+  socket.emit("msg", { player: "one" }); // emitting 'msg' to server-side
+  socket.on("serverMsg", (data) => {
+    // listener to server-side events 'serverMsg'
+    console.log({ data });
+  });
+</script>
+```

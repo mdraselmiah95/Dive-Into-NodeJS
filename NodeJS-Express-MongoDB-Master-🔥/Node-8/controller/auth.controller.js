@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const path = require("path");
-const { token } = require("morgan");
 const privateKey = fs.readFileSync(
   path.resolve(__dirname, "../private.key"),
   "utf-8"
@@ -35,14 +34,14 @@ exports.login = async (req, res) => {
     const doc = await User.findOne({ email: req.body.email });
     const isAuth = bcrypt.compareSync(req.body.password, doc.password);
     if (isAuth) {
-      var token = jwt.sign({ email: req.body.email }, privateKey, {
+      var newToken = jwt.sign({ email: req.body.email }, privateKey, {
         algorithm: "RS256",
       });
-      doc.token = token;
-      console.log(token);
-      const result = await User.findByIdAndUpdate(token, (doc.token = token), {
-        new: true,
-      });
+
+      const filter = { token: doc.token };
+      const update = { token: newToken };
+
+      await User.findOneAndUpdate(filter, update, { new: true });
     } else {
       res.sendStatus(401);
     }
