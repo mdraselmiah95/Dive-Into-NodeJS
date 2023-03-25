@@ -43,9 +43,11 @@ exports.createProduct = async (req, res) => {
 exports.getAllProduct = async (req, res) => {
   try {
     let query = Product.find();
-    console.log(query);
-    if (req.query) {
-      const products = await query.sort(req.query).exec();
+    if (req.query.sort) {
+      const products = await query
+        .sort({ [req.query.sort]: req.query.order })
+        .limit(req.query.limit)
+        .exec();
       res.status(200).json({
         status: "Success",
         data: products,
