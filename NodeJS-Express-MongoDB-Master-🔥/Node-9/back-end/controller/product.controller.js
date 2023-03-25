@@ -42,15 +42,25 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProduct = async (req, res) => {
   try {
-    const products = await Product.find({});
-    res.status(200).json({
-      status: "Success",
-      data: products,
-    });
+    let query = Product.find();
+    console.log(query);
+    if (req.query) {
+      const products = await query.sort(req.query).exec();
+      res.status(200).json({
+        status: "Success",
+        data: products,
+      });
+    } else {
+      const products = await query.exec();
+      res.status(200).json({
+        status: "Success",
+        data: products,
+      });
+    }
   } catch (error) {
     res.status(400).json({
       status: "Fail",
-      error: "Couldn't Get The Products",
+      error: "Couldn't Get the Products",
     });
   }
 };
