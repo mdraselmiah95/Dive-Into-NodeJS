@@ -1,3 +1,4 @@
+require("./event");
 require("dotenv").config();
 const morgan = require("morgan");
 const cors = require("cors");
