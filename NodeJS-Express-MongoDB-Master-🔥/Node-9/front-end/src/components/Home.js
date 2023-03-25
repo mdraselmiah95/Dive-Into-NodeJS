@@ -9,24 +9,30 @@ axios.defaults.headers.common["Authorization"] =
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const getProducts = async () => {
     const data = await axios.get("/products");
-    setProducts(data.data.data);
+    setProducts(data.data);
+    setTotal(data.data.length);
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const handlePage = async (page) => {
+    const res = await axios.get("/products?page=" + page);
+    setProducts(res.data.data);
+  };
 
   // Sorting Front-end
-
   const handleSort = async (e) => {
     console.log(e.target.value);
     const field = e.target.value.split(".");
     const res = await axios.get(`/products?sort=${field[0]}&order=${field[1]}`);
     setProducts(res.data.data);
   };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div className="container my-5">
@@ -50,6 +56,15 @@ const Home = () => {
             products={products}
           />
         ))}
+      </div>
+      <div className="py-3">
+        {Array(Math.ceil(total / 4))
+          .fill(0)
+          .map((e, i) => (
+            <button key={i} onClick={() => handlePage(i + 1)}>
+              {i + 1}
+            </button>
+          ))}
       </div>
     </div>
   );
