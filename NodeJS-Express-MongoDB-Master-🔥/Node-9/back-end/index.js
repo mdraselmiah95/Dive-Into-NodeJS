@@ -15,6 +15,10 @@ const publicKey = fs.readFileSync(
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+//Socket
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+
 // BodyParser
 const auth = (req, res, next) => {
   try {
@@ -64,6 +68,20 @@ app.use("/api/v1/products", productRoute);
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
 
-app.listen(process.env.PORT, () => {
+io.on("connection", (socket) => {
+  console.log("Socket", socket.id);
+
+  socket.on("msg", (data) => {
+    console.log({ data });
+  });
+
+  socket.emit("serverMsg", { server: "Rasel mia" });
+});
+
+server.listen(process.env.PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
+
+// app.listen(process.env.PORT, () => {
+//   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
+// });
