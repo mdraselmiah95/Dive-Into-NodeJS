@@ -1,11 +1,19 @@
 const express = require("express");
 require("dotenv").config();
+const fs = require("fs");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+app.get("/", [
+  (res, res, next) => {
+    fs.readFile("/file-doesnt-exist", "utf-8", (err, data) => {
+      next(err);
+    });
+  },
+  (req, res, next) => {
+    console.log(data.property);
+  },
+]);
 
 // TODO: 404 error handling
 app.use((req, res, next) => {
